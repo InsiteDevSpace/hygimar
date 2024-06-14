@@ -1,0 +1,172 @@
+<header class="header">
+  <div class="header-top">
+    <div class="container">
+      <div class="header-left d-none d-xl-block">
+        <div class="info-box info-box-icon-left p-0">
+          <i class="icon-shipping text-primary"></i>
+          <div class="info-box-content0">
+            <h4 class="mb-0">Livraison rapide partout au Maroc</h4>
+          </div>
+        </div>
+      </div>
+      <div class="header-right header-dropdowns">
+        <div class="header-dropdown dropdown-expanded d-none d-lg-block">
+          <a href="#">Links</a>
+          <div class="header-menu">
+            <ul>
+              <li>
+                <a href="#">
+                  <i class="icon-pin"></i>
+                  126 Boulevard Oued Beht Etage RC, Casablanca 20200
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <span class="separator d-none d-lg-inline"></span>
+        <div class="social-icons">
+          <a
+            href="#"
+            class="social-icon social-instagram icon-instagram"
+            target="_blank"
+          ></a>
+          <a
+            href="#"
+            class="social-icon social-twitter icon-twitter"
+            target="_blank"
+          ></a>
+          <a
+            href="#"
+            class="social-icon social-facebook icon-facebook"
+            target="_blank"
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="header-middle sticky-header"
+    data-sticky-options="{'mobile': true}"
+  >
+    <div class="container">
+      <div class="header-left w-lg-max">
+        <button class="mobile-menu-toggler text-primary mr-2" type="button">
+          <i class="fas fa-bars"></i>
+        </button>
+        <a href="/" class="logo">
+          <img
+            src="/assets/images/logo.png"
+            class="w-100"
+            width="211"
+            height="144"
+            alt="hygimar Logo"
+          />
+        </a>
+        <div
+          class="header-icon header-search header-search-inline header-search-category d-lg-block d-none text-right mt-0"
+        >
+          <a href="#" class="search-toggle" role="button"
+            ><i class="icon-magnifier"></i
+          ></a>
+          <form action="#" method="get">
+            <div class="header-search-wrapper">
+              <input
+                type="search"
+                class="form-control"
+                name="q"
+                id="q"
+                placeholder="Search..."
+                required
+              />
+              <button
+                class="btn icon-magnifier p-0"
+                title="search"
+                type="submit"
+              ></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="header-bottom sticky-header d-none d-lg-flex"
+    data-sticky-options="{'mobile': false}"
+  >
+    <div class="container">
+      <div class="header-center w-100 ml-0">
+        <nav class="main-nav d-flex font2">
+          <div class="menu-depart">
+            <a href="/"
+              ><i class="fa fa-bars align-middle mr-3"></i> Categories</a
+            >
+            <ul class="menu menu-vertical">
+              <% categories.forEach(category => { %>
+              <li class="menu-item">
+                <a href="/categorie/<%= category._id %>"
+                  ><%= category.catg_name %></a
+                >
+                <span class="menu-btn"></span>
+                <div class="megamenu megamenu-fixed-width megamenu-one">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <ul class="submenu">
+                        <% category.subcategories.forEach(subcategory => { %>
+                        <li>
+                          <a href="/subcategorie/<%= subcategory._id %>"
+                            ><%= subcategory.subcatg_name %></a
+                          >
+                        </li>
+                        <% }) %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <% }) %>
+            </ul>
+          </div>
+          <ul class="menu">
+            <li><a href="/">Accueil</a></li>
+            <li><a href="/a-propos">À Propos</a></li>
+            <li>
+              <a href="#">Nos Marques</a>
+              <ul class="custom-scrollbar">
+                <% markedCategories.forEach(category => { %>
+                <li>
+                  <a href="/categorie/<%= category._id %>"
+                    ><%= category.catg_name %></a
+                  >
+                </li>
+                <% }) %>
+              </ul>
+            </li>
+            <li>
+              <a href="/produits">Nos Produits</a>
+              <ul class="custom-scrollbar">
+                <% categories.forEach(category => { %>
+                <li>
+                  <a href="/categorie/<%= category._id %>"
+                    ><%= category.catg_name %></a
+                  >
+                </li>
+                <% }) %>
+              </ul>
+            </li>
+            <li>
+              <a href="/catalogues">Nos Catalogues</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="info-boxes font2 align-items-center ml-auto">
+          <div class="info-item">
+            <a href="/contact"
+              ><i class="icon-business-book"></i>Contactez Nous</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="header-right"></div>
+    </div>
+  </div>
+</header>

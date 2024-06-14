@@ -23,13 +23,14 @@ import subcategoryRoute from "./routes/subcategoryRoute.js";
 
 dotenv.config();
 
-// Express app
-const app = express();
-app.set("view engine", "ejs");
-
-// Get __dirname using ES module syntax
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+// Express app
+
+const app = express();
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -99,6 +100,27 @@ app.get("/", async (req, res) => {
     console.log("Fetched products:", products);
 
     res.render("index", { categories, markedCategories, products });
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    res.status(500).send("Error loading data");
+  }
+});
+
+app.get("/a-propos", async (req, res) => {
+  try {
+    console.log(`Fetching categories and products from ${BASE_URL}`);
+    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+      axios.get(`${BASE_URL}/api/category/getcatg`),
+      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+    ]);
+
+    const categories = categoriesResponse.data;
+    const markedCategories = markedCategoriesResponse.data;
+
+    console.log("Fetched categories:", categories);
+    console.log("Fetched marked categories:", markedCategories);
+
+    res.render("about", { categories, markedCategories });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");

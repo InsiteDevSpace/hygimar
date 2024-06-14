@@ -1,0 +1,62 @@
+<div class="mobile-menu-container">
+  <div class="mobile-menu-wrapper">
+    <span class="mobile-menu-close"><i class="fa fa-times"></i></span>
+    <nav class="mobile-nav">
+      <ul class="mobile-menu">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/a-propos">A Propos</a></li>
+        <li>
+          <a href="/produits">Gammes de produit</a>
+
+          <ul>
+            <% categories.forEach(category => { %>
+            <li>
+              <a href="/categorie/<%= category._id %>"
+                ><%= category.catg_name %></a
+              >
+            </li>
+            <% }) %>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Marques</a>
+          <ul>
+            <% markedCategories.forEach(category => { %>
+            <li>
+              <a href="/categorie/<%= category._id %>"
+                ><%= category.catg_name %></a
+              >
+            </li>
+            <% }) %>
+          </ul>
+        </li>
+        <li><a href="/catalogues">Catalogues</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- End .mobile-nav -->
+
+    <div class="social-icons">
+      <a
+        href="#"
+        class="social-icon social-facebook icon-facebook"
+        target="_blank"
+      >
+      </a>
+      <a
+        href="#"
+        class="social-icon social-twitter icon-twitter"
+        target="_blank"
+      >
+      </a>
+      <a
+        href="#"
+        class="social-icon social-instagram icon-instagram"
+        target="_blank"
+      >
+      </a>
+    </div>
+  </div>
+  <!-- End .mobile-menu-wrapper -->
+</div>
+<!-- End .mobile-menu-container -->

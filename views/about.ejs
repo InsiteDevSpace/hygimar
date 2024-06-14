@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Hygimar - À Propos</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Porto - Bootstrap eCommerce Template" />
+    <meta name="author" content="SW-THEMES" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/images/icons/favicon.png"
+    />
+
+    <script>
+      WebFontConfig = {
+        google: {
+          families: [
+            "Open+Sans:300,400,600,700,800",
+            "Poppins:200,300,400,500,600,700,800",
+            "Oswald:300,400,500,600,700,800",
+          ],
+        },
+      };
+      (function (d) {
+        var wf = d.createElement("script"),
+          s = d.scripts[0];
+        wf.src = "/assets/js/webfont.js";
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+    </script>
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/assets/css/demo35.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/vendor/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/vendor/simple-line-icons/css/simple-line-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <%- include('partials/header.ejs', { categories: categories,
+      markedCategories: markedCategories }) %>
+
+      <main class="main about">
+        <div
+          class="page-header page-header-bg text-left"
+          style="
+            background: 50% / cover #d4e1ea
+              url('assets/images/page-header-bg.jpg');
+          "
+        >
+          <div class="container">
+            <h1><span>HYGIMAR</span>À PROPOS</h1>
+            <a href="/contact" class="btn btn-dark">Contact</a>
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .page-header -->
+
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+          <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="demo4.html"><i class="icon-home"></i></a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                À Propos
+              </li>
+            </ol>
+          </div>
+          <!-- End .container -->
+        </nav>
+
+        <div class="about-section">
+          <div class="container">
+            <h2 class="subtitle">Notre Histoire</h2>
+            <p>
+              Bienvenue sur le site web d’Hygimar, votre fournisseur de
+              confiance pour tout ce qui concerne le matériel de nettoyage
+              professionnel. Nous sommes une entreprise spécialisée dans la
+              vente de solutions de nettoyage de haute qualité pour les
+              entreprises et les institutions, et nous sommes fiers d’offrir une
+              large gamme de produits pour répondre à tous vos besoins.
+            </p>
+            <p>
+              Notre entreprise est fondée sur des valeurs solides de qualité,
+              d’efficacité et de service client exceptionnel. Nous comprenons
+              que chaque entreprise a des besoins différents en matière de
+              nettoyage, c’est pourquoi nous travaillons en étroite
+              collaboration avec nos clients pour comprendre leurs exigences
+              spécifiques et leur fournir des produits qui répondent à leurs
+              attentes.
+            </p>
+
+            <p>
+              Notre gamme de produits comprend des aspirateurs professionnels,
+              des nettoyeurs haute pression, des équipements de lavage de sol,
+              des machines de nettoyage de tapis, des produits de nettoyage
+              écologiques, des produits de désinfection et bien plus encore.
+              Nous nous engageons à fournir des produits de qualité supérieure à
+              des prix compétitifs, ce qui vous permet de réaliser des économies
+              tout en bénéficiant d’une solution de nettoyage de haute qualité.
+            </p>
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .about-section -->
+
+        <div class="features-section bg-gray">
+          <div class="container">
+            <h2 class="subtitle">POURQUOI NOUS CHOISIR?</h2>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="feature-box bg-white">
+                  <i class="icon-shipped"></i>
+
+                  <div class="feature-box-content p-0">
+                    <h3>LIVRAISON RAPIDE</h3>
+                    <p>Partout au Maroc</p>
+                  </div>
+                  <!-- End .feature-box-content -->
+                </div>
+                <!-- End .feature-box -->
+              </div>
+              <!-- End .col-lg-4 -->
+
+              <div class="col-lg-4">
+                <div class="feature-box bg-white">
+                  <i class="icon-us-dollar"></i>
+
+                  <div class="feature-box-content p-0">
+                    <h3>MEILLEURE RAPPORT QUALITÉ PRIX</h3>
+                    <p>La meilleur qualité au prix le plus bas.</p>
+                  </div>
+                  <!-- End .feature-box-content -->
+                </div>
+                <!-- End .feature-box -->
+              </div>
+              <!-- End .col-lg-4 -->
+
+              <div class="col-lg-4">
+                <div class="feature-box bg-white">
+                  <i class="icon-online-support"></i>
+
+                  <div class="feature-box-content p-0">
+                    <h3>SERVICE CLIENT À VOTRE ECOUTE</h3>
+                    <p>Nos équipes disponibles pour vous.</p>
+                  </div>
+                  <!-- End .feature-box-content -->
+                </div>
+                <!-- End .feature-box -->
+              </div>
+              <!-- End .col-lg-4 -->
+            </div>
+            <!-- End .row -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .features-section -->
+
+        <div class="about-section">
+          <div class="container">
+            <p>
+              Chez Hygimar, nous croyons que le service client est essentiel
+              pour établir des relations à long terme avec nos clients. Nous
+              avons une équipe de professionnels du nettoyage expérimentés qui
+              sont prêts à répondre à toutes vos questions et à vous aider à
+              trouver les solutions de nettoyage les plus adaptées à vos
+              besoins.
+            </p>
+            <p>
+              En somme, nous sommes fiers de fournir des solutions de nettoyage
+              de qualité supérieure à nos clients, avec un service client
+              exceptionnel pour vous garantir une expérience d’achat agréable et
+              facile. Si vous avez des questions ou si vous souhaitez obtenir de
+              plus amples informations sur nos produits, n’hésitez pas à nous
+              contacter.
+            </p>
+          </div>
+          <!-- End .container -->
+        </div>
+
+        <div class="testimonials-section">
+          <div class="container">
+            <h2 class="subtitle">TEMOIGNAGES DES CLIENTS</h2>
+
+            <div
+              class="testimonials-carousel owl-carousel owl-theme images-left"
+              data-owl-options="{
+						'margin': 20,
+                        'lazyLoad': true,
+                        'autoHeight': true,
+                        'dots': false,
+                        'responsive': {
+                            '0': {
+                                'items': 1
+                            },
+                            '992': {
+                                'items': 3
+                            }
+                        }
+                    }"
+            >
+              <div class="testimonial">
+                <div class="testimonial-owner">
+                  <figure>
+                    <img src="assets/images/clients/client1.png" alt="client" />
+                  </figure>
+
+                  <div>
+                    <strong class="testimonial-title">John Smith</strong>
+                    <span>SMARTWAVE CEO</span>
+                  </div>
+                </div>
+                <!-- End .testimonial-owner -->
+
+                <blockquote>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur elitad adipiscing
+                    Cras non placerat mipsum dolor sit amet, consectetur elitad
+                    adipiscing cas non placerat mi.
+                  </p>
+                </blockquote>
+              </div>
+              <!-- End .testimonial -->
+
+              <div class="testimonial">
+                <div class="testimonial-owner">
+                  <figure>
+                    <img src="assets/images/clients/client2.png" alt="client" />
+                  </figure>
+
+                  <div>
+                    <strong class="testimonial-title">Bob Smith</strong>
+                    <span>SMARTWAVE CEO</span>
+                  </div>
+                </div>
+                <!-- End .testimonial-owner -->
+
+                <blockquote>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur elitad adipiscing
+                    Cras non placerat mipsum dolor sit amet, consectetur elitad
+                    adipiscing cas non placerat mi.
+                  </p>
+                </blockquote>
+              </div>
+              <!-- End .testimonial -->
+
+              <div class="testimonial">
+                <div class="testimonial-owner">
+                  <figure>
+                    <img src="assets/images/clients/client1.png" alt="client" />
+                  </figure>
+
+                  <div>
+                    <strong class="testimonial-title">John Smith</strong>
+                    <span>SMARTWAVE CEO</span>
+                  </div>
+                </div>
+                <!-- End .testimonial-owner -->
+
+                <blockquote>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur elitad adipiscing
+                    Cras non placerat mipsum dolor sit amet, consectetur elitad
+                    adipiscing cas non placerat mi.
+                  </p>
+                </blockquote>
+              </div>
+              <!-- End .testimonial -->
+            </div>
+            <!-- End .testimonials-slider -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .testimonials-section -->
+
+        <div class="counters-section bg-gray">
+          <div class="container">
+            <div class="row">
+              <div class="col-6 col-md-4 count-container">
+                <!-- End .count-wrapper -->
+                <h3 class="">HYGIMAR<br />EN CHIFFRE:</h3>
+              </div>
+              <!-- End .col-md-4 -->
+
+              <div class="col-6 col-md-4 count-container">
+                <div class="count-wrapper">
+                  <span
+                    class="count-to"
+                    data-from="0"
+                    data-to="1800"
+                    data-speed="2000"
+                    data-refresh-interval="50"
+                    >650</span
+                  >+
+                </div>
+                <!-- End .count-wrapper -->
+                <h4 class="count-title">Projets Réalisés</h4>
+              </div>
+              <!-- End .col-md-4 -->
+
+              <div class="col-6 col-md-4 count-container">
+                <div class="count-wrapper line-height-1">
+                  <span
+                    class="count-to"
+                    data-from="0"
+                    data-to="24"
+                    data-speed="2000"
+                    data-refresh-interval="50"
+                    >20</span
+                  >+
+                </div>
+                <!-- End .count-wrapper -->
+                <h4 class="count-title">Partenaires</h4>
+              </div>
+              <!-- End .col-md-4 -->
+
+              <div class="col-6 col-md-4 count-container">
+                <div class="count-wrapper">
+                  <span
+                    class="count-to"
+                    data-from="0"
+                    data-to="265"
+                    data-speed="2000"
+                    data-refresh-interval="50"
+                    >600</span
+                  >+
+                </div>
+                <!-- End .count-wrapper -->
+                <h4 class="count-title">Références</h4>
+              </div>
+              <!-- End .col-md-4 -->
+
+              <div class="col-6 col-md-4 count-container">
+                <div class="count-wrapper line-height-1">
+                  <span
+                    class="count-to"
+                    data-from="0"
+                    data-to="99"
+                    data-speed="2000"
+                    data-refresh-interval="50"
+                    >98</span
+                  ><span>%</span>
+                </div>
+                <!-- End .count-wrapper -->
+                <h4 class="count-title">Clients Satisfaits</h4>
+              </div>
+              <!-- End .col-md-4 -->
+            </div>
+            <!-- End .row -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .counters-section -->
+      </main>
+      <!-- End .main -->
+
+      <%- include('partials/footer.ejs', { categories: categories,
+      markedCategories: markedCategories }) %>
+    </div>
+    <!-- End .page-wrapper -->
+
+    <div class="loading-overlay">
+      <div class="bounce-loader">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <%- include('partials/menu-mobile.ejs', { categories: categories,
+    markedCategories: markedCategories }) %>
+
+    <a id="scroll-top" href="#top" title="Top" role="button"
+      ><i class="icon-angle-up"></i
+    ></a>
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/plugins.min.js"></script>
+    <script src="/assets/js/nouislider.min.js"></script>
+    <script src="/assets/js/jquery.plugin.min.js"></script>
+    <script src="/assets/js/jquery.countdown.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>
