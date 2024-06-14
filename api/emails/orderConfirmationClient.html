@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Order Confirmation</title>
+  </head>
+  <body>
+    <h1>Thank you for your order!</h1>
+    <p>
+      Your order has been received and is being processed. Here are the details:
+    </p>
+    <p>Order ID: {{orderId}}</p>
+    <p>Products:</p>
+    <ul>
+      {{#each products}}
+      <li>{{this.name}} - Quantity: {{this.quantity}}</li>
+      {{/each}}
+    </ul>
+    <p>Total Quantity: {{totalQuantity}}</p>
+  </body>
+</html>

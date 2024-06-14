@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Hygimar - Fournisseur Nilfisk Maroc</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Hygimar - Fournisseur Nilfisk Maroc" />
+    <meta name="author" content="SW-THEMES" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/images/icons/favicon.png"
+    />
+
+    <script>
+      WebFontConfig = {
+        google: {
+          families: [
+            "Open+Sans:300,400,600,700,800",
+            "Poppins:200,300,400,500,600,700,800",
+            "Oswald:300,400,500,600,700,800",
+          ],
+        },
+      };
+      (function (d) {
+        var wf = d.createElement("script"),
+          s = d.scripts[0];
+        wf.src = "/assets/js/webfont.js";
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+    </script>
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/assets/css/demo35.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/vendor/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/vendor/simple-line-icons/css/simple-line-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="loading-overlay">
+      <div class="bounce-loader">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
+    <div class="page-wrapper">
+      <header class="header">
+        <div class="header-top">
+          <div class="container">
+            <div class="header-left d-none d-xl-block">
+              <div class="info-box info-box-icon-left p-0">
+                <i class="icon-shipping text-primary"></i>
+
+                <div class="info-box-content0">
+                  <h4 class="mb-0">Livraison rapide partout au Maroc</h4>
+                </div>
+                <!-- End .info-box-content -->
+              </div>
+              <!-- End .info-box -->
+            </div>
+            <!-- End .header-left -->
+
+            <div class="header-right header-dropdowns">
+              <!-- End .header-dropown -->
+
+              <div class="header-dropdown dropdown-expanded d-none d-lg-block">
+                <a href="#">Links</a>
+                <div class="header-menu">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <i class="icon-pin"></i>
+                        126 Boulevard Oued Beht Etage RC, Casablanca 20200
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <span class="separator d-none d-lg-inline"></span>
+
+              <div class="social-icons">
+                <a
+                  href="#"
+                  class="social-icon social-instagram icon-instagram"
+                  target="_blank"
+                ></a>
+                <a
+                  href="#"
+                  class="social-icon social-twitter icon-twitter"
+                  target="_blank"
+                ></a>
+                <a
+                  href="#"
+                  class="social-icon social-facebook icon-facebook"
+                  target="_blank"
+                ></a>
+              </div>
+              <!-- End .social-icons -->
+            </div>
+            <!-- End .header-right -->
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-top -->
+
+        <div
+          class="header-middle sticky-header"
+          data-sticky-options="{'mobile': true}"
+        >
+          <div class="container">
+            <div class="header-left w-lg-max">
+              <button
+                class="mobile-menu-toggler text-primary mr-2"
+                type="button"
+              >
+                <i class="fas fa-bars"></i>
+              </button>
+              <a href="/" class="logo">
+                <img
+                  src="assets/images/logo.png"
+                  class="w-100"
+                  width="211"
+                  height="144"
+                  alt="hygimar Logo"
+                />
+              </a>
+              <div
+                class="header-icon header-search header-search-inline header-search-category d-lg-block d-none text-right mt-0"
+              >
+                <a href="#" class="search-toggle" role="button"
+                  ><i class="icon-magnifier"></i
+                ></a>
+                <form action="#" method="get">
+                  <div class="header-search-wrapper">
+                    <input
+                      type="search"
+                      class="form-control"
+                      name="q"
+                      id="q"
+                      placeholder="Search..."
+                      required
+                    />
+                    
+                    <!-- End .select-custom -->
+                    <button
+                      class="btn icon-magnifier p-0"
+                      title="search"
+                      type="submit"
+                    ></button>
+                  </div>
+                  <!-- End .header-search-wrapper -->
+                </form>
+              </div>
+              <!-- End .header-search -->
+            </div>
+          </div>
+          <!-- End .container -->
+        </div>
+        <!-- End .header-middle -->
+
+        <div
+          class="header-bottom sticky-header d-none d-lg-flex"
+          data-sticky-options="{'mobile': false}"
+        >
+          <div class="container">
+            <div class="header-center w-100 ml-0">
+              <nav class="main-nav d-flex font2">
+                <div class="menu-depart">
+                  <a href="/"
+                    ><i class="fa fa-bars align-middle mr-3"></i> Categories</a
+                  >
+                  <ul class="menu menu-vertical">
+                    <% categories.forEach(category => { %>
+                      <li class="menu-item">
+                        <a href="/categorie/<%= category._id %>"><%= category.catg_name %></a>
+                        <span class="menu-btn"></span>
+                        <div class="megamenu megamenu-fixed-width megamenu-one">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <ul class="submenu">
+                                <% category.subcategories.forEach(subcategory => { %>
+                                  <li>
+                                    <a href="/subcategorie/<%= subcategory._id %>"><%= subcategory.subcatg_name %></a>
+                                  </li>
+                                <% }) %>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- End .megamenu -->
+                      </li>
+                    <% }) %>
+                  </ul>
+
+
+
+                </div>
+                <ul class="menu">
+      
+                  <li>
+                    <a href="demo35-product.html">Accueil</a>
+                  </li>
+                  <li><a href="blog.html">À Propos</a></li>
+          
+
+                   <li>
+                      <a href="#">Nos Marques</a>
+                      <ul class="custom-scrollbar">
+                          <% markedCategories.forEach(category => { %>
+                              <li><a href="/categorie/<%= category._id %>"><%= category.catg_name %></a></li>
+                          <% }) %>
+                      </ul>
+                  </li>
+                  <li>
+                    <a href="#">Nos Produits</a>
+                    <ul class="custom-scrollbar">
+                      <% categories.forEach(category => { %>
+                          <li><a href="/categorie/<%= category._id %>"><%= category.catg_name %></a></li>
+                      <% }) %>
+                    </ul>
+                  </li>
+
+                  
+                  <li>
+                    <a href="#">Nos Catalogues</a>
+                    <ul>
+                      <li><a href="">Catalogue HYGIMAR</a></li>
+                      <li><a href="">Catalogues NILFISK 2024</a></li>
+                      <li><a href="">Catalogues VIBER 2024</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <div class="info-boxes font2 align-items-center ml-auto">
+                <div class="info-item">
+                  <a href="#"
+                    ><i class="icon-business-book"></i>Contactez Nous</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="header-right"></div>
+          </div>
+        </div>
+      </header>
+      <!-- End .header -->
+
+      <main class="main bg-gray">
+        <section class="intro-section">
+          <div
+            class="home-slider owl-carousel owl-theme loaded slide-animate mb-4"
+            data-owl-options="{
+                    'nav': false,
+                    'lazyLoad': false
+                }"
+          >
+            <div
+              class="home-slide home-slide-1 banner"
+              style="background-color: #d9e2e1"
+            >
+              <figure>
+                <img
+                  src="assets/images/bc1.png"
+                  alt="slide"
+                  width="1903"
+                  height="520"
+                />
+              </figure>
+
+              <div class="banner-layer banner-layer-middle banner-layer-left">
+    
+                <h2
+                  class="appear-animate"
+                  data-animation-name="fadeInUpShorter"
+                  data-animation-delay="600"
+                >
+                  Hygimar
+                </h2>
+                <div
+                  class="position-relative appear-animate"
+                  data-animation-name="fadeInRightShorter"
+                  data-animation-delay="1100"
+                >
+                  <h3 class="text-uppercase mb-4">Le leader en Hygiène<br>au Maroc</h3>
+   
+                </div>
+        
+                <div
+                  class="coupon-sale-text m-b-2 appear-animate"
+                  data-animation-name="fadeInRightShorter"
+                  data-animation-delay="1800"
+                >
+                  <h6 class="text-uppercase text-right mb-0">
+                    <sup>up to</sup><strong class="text-white">50%</strong>
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div
+              class="home-slide home-slide-2 banner"
+              style="background-color: #f7eeef"
+            >
+              <figure>
+                <img
+                  src="assets/images/slide-2.png"
+                  alt="slide"
+                  width="1903"
+                  height="520"
+                />
+              </figure>
+
+              <div class="banner-layer banner-layer-middle banner-layer-left">
+    
+                <h2
+                  class="appear-animate"
+                  data-animation-name="fadeInUpShorter"
+                  data-animation-delay="600"  style="color: #d9e2e1;"
+                >
+                  Hygimar
+                </h2>
+                <div
+                  class="position-relative appear-animate"
+                  data-animation-name="fadeInRightShorter"
+                  data-animation-delay="1100"
+                >
+                  <h3 class="text-uppercase mb-4"  style="color: #d9e2e1;">Expériences et savoir-faire<br>à vos service</h3>
+   
+                </div>
+        
+        
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="popular-section">
+          <div class="container">
+            <div
+              class="info-boxes-slider owl-carousel"
+              data-owl-options="{
+                        'items': 1,
+                        'margin': 0,
+                        'dots': false,
+                        'loop': false,
+                        'autoHeight': true,
+                        'responsive': {
+                            '576': {
+                                'items': 2
+                            },
+                            '768': {
+                                'items': 3
+                            },
+                            '1200': {
+                                'items': 4
+                            }
+                        }
+                    }"
+            >
+              <div class="info-box info-box-icon-left">
+                <i class="icon-shipping text-primary"></i>
+                <div class="info-content">
+                  <h4 class="ls-n-25">LIVRAISON RAPIDE</h4>
+                  <p class="font2 font-weight-light text-body ls-10">
+                    Livraison partout au Maroc
+                  </p>
+                </div>
+              </div>
+              <div class="info-box info-box-icon-left">
+                <i class="icon-money text-primary"></i>
+                <div class="info-content">
+                  <h4 class="ls-n-25">MEILLEURE QUALITÉ / PRIX</h4>
+                  <p class="font2 font-weight-light text-body ls-10">
+                    La meilleur qualité au prix le plus bas
+                  </p>
+                </div>
+              </div>
+              <div class="info-box info-box-icon-left">
+                <i class="icon-support text-primary"></i>
+                <div class="info-content">
+                  <h4 class="ls-n-25">SERVICE CLIENT À VOTRE ECOUTE</h4>
+                  <p class="font2 font-weight-light text-body ls-10">
+                    Nos équipes disponibles pour vous
+                  </p>
+                </div>
+              </div>
+              <div class="info-box info-box-icon-left">
+                <i class="icon-secure-payment text-primary"></i>
+                <div class="info-content">
+                  <h4 class="ls-n-25">DONNÉES SÉCURISÉES</h4>
+                  <p class="font2 font-weight-light text-body ls-10">
+                    Vos données personnelles sont tous sécurisées
+                  </p>
+                </div>
+              </div>
+            </div>
+
+           
+
+
+            <h2 class="section-title">HYGIMAR EN CHIFFRE</h2>
+            <p class="section-info font2">
+            Nous devons notre succès à notre présence sur différents territoires, à l’engagement de nos collaborateurs, et à notre diversification avancée et notre ouverture sur de nouveaux secteurs.
+
+            </p>
+
+            <div
+              class="info-boxes-slider owl-carousel"
+              data-owl-options="{
+                        'items': 1,
+                        'margin': 0,
+                        'dots': false,
+                        'loop': false,
+                        'autoHeight': true,
+                        'responsive': {
+                            '576': {
+                                'items': 2
+                            },
+                            '768': {
+                                'items': 3
+                            },
+                            '1200': {
+                                'items': 4
+                            }
+                        }
+                    }"
+            >
+              <div class="info-box" style="justify-content: center;">
+                <div class="info-content">
+                  <h4 class="ls-n-25 text-primary" style="font-size: 40px;">98%</h4>
+                  <p class="font2 font-weight-light text-body ls-10" style="font-size: 16px;margin-top: 10px;">
+                    Clients satisfaits
+                  </p>
+                </div>
+              </div>
+              <div class="info-box" style="justify-content: center;">
+                <div class="info-content">
+                  <h4 class="ls-n-25 text-primary" style="font-size: 40px;">+650</h4>
+                  <p class="font2 font-weight-light text-body ls-10" style="font-size: 16px;margin-top: 10px;">
+                    Projets réalisés
+                  </p>
+                </div>
+              </div>
+              <div class="info-box" style="justify-content: center;">
+                <div class="info-content">
+                  <h4 class="ls-n-25 text-primary" style="font-size: 40px;">+20</h4>
+                  <p class="font2 font-weight-light text-body ls-10" style="font-size: 16px;margin-top: 10px;">
+                    Partenaires
+                  </p>
+                </div>
+              </div>
+              <div class="info-box" style="justify-content: center;">
+                <div class="info-content">
+                  <h4 class="ls-n-25 text-primary" style="font-size: 40px;">+600</h4>
+                  <p class="font2 font-weight-light text-body ls-10" style="font-size: 16px;margin-top: 10px;">
+                    Références
+                  </p>
+                </div>
+              </div>
+            </div>
+
+   
+          </div>
+        </section>
+
+        <section class="special-section">
+          <div class="container">
+            <div
+              class="appear-animate"
+              data-animation-name="fadeIn"
+              data-animation-delay="200"
+            >
+
+              <h2 class="section-title">NOS GAMMES DE PRODUITS</h2>
+              <p class="section-info font2">Nous sommes une entreprise spécialisée dans la vente de solutions de nettoyage de haute qualité pour les entreprises et les institutions, et nous sommes fiers d’offrir une large gamme de produits pour répondre à tous vos besoins.
+              </p>
+
+              <div class="products-container bg-white mb-4 rounded">
+                <div class="row">
+                  <div
+                    class="products-slider owl-carousel owl-theme nav-outer"
+                    data-owl-options="{
+                                    'dots': false,
+                                    'nav': true,
+                                    'margin': 0,
+                                    'responsive': {
+                                        '576': {
+                                            'items': 3
+                                        },
+                                        '768': {
+                                            'items': 4
+                                        },
+                                        '1200': {
+                                            'items': 6
+                                        }
+                                    }
+                                }"
+                  >
+                    
+                  <% products.forEach(product => { %>
+                    <div class="product-default inner-quickview inner-icon">
+                      <figure>
+                        <a href="/produit/<%= product._id %>">
+                          <img src="<%= product.primaryImage %>" width="217" height="217" alt="product" />
+                        </a>
+                        <a href="/produit/<%= product._id %>" class="btn-quickview" title="Voir Plus">Voir Plus</a>
+                      </figure>
+                      <div class="product-details">
+                        <div class="category-wrap">
+                          <div class="category-list">
+                            <a href="/categorie/<%= product.id_catg._id %>" class="product-category"><%= product.id_catg.catg_name %></a>,
+                            <a href="/subcategorie/<%= product.id_subcatg._id %>" class="product-category"><%= product.id_subcatg.subcatg_name %></a>
+                          </div>
+                        </div>
+                        <h3 class="product-title">
+                          <a href="/produit/<%= product._id %>"><%= product.name %></a>
+                        </h3>
+                      </div>
+                    </div>
+                  <% }) %>
+
+
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+
+         
+
+            
+          </div>
+        </section>
+
+        <section class="brands-section">
+          <div class="container">
+            <div
+              class="appear-animate"
+              data-animation-name="fadeInUpShorter"
+              data-animation-delay="100"
+            >
+              <h2 class="section-title">Nos Références</h2>
+              <p class="section-info font2">
+                All our new arrivals in a exclusive brand selection
+              </p>
+            </div>
+
+            <div
+              class="slider-wrapper bg-white rounded appear-animate"
+              data-animation-name="fadeInUpShorter"
+              data-animation-delay="300"
+            >
+              <div
+                class="brands-slider owl-carousel owl-theme nav-outer"
+                data-owl-options="{
+                            'navText': ['<i class=icon-angle-left>', '<i class=icon-angle-right>'],
+                            'center': true,
+                            'loop': true,
+                            'nav': true,
+                            'responsive': {
+                                '992': {
+                                    'items': 9
+                                },
+                                '1200': {
+                                    'items': 4
+                                }
+                            }
+                        }"
+              >
+                <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand2.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+
+                <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand3.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+                <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand4.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+                <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand5.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+                <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand6.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+                 <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand7.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+                 <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand8.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+                 <div class="d-inline-block">
+                  <img
+                    src="assets/images/brands/small/brand9.png"
+                    alt="brand"
+                    width="140"
+                    height="40"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="post-section">
+          <div class="container">
+
+
+            <div
+              class="post-date-in-media media-with-zoom bg-white rounded appear-animate"
+              data-animation-name="fadeInUpShorter"
+              data-animation-delay="300"
+            >
+              <div
+                class="owl-carousel owl-theme mb-2 appear-animate"
+                data-owl-options="{
+                            'loop': false,
+                            'nav': false,
+                            'dots': false,
+                            'margin': 20,
+                            'items': 1,
+                            'responsive': {
+                                '576': {
+                                    'items': 2
+                                }
+                            }
+                        }"
+              >
+                <article class="post">
+                  <div class="post-media">
+                    <img
+                      src="assets/images/Nilfisk-SC401-scrubber-cleaning-shopping-centre.jpg"
+                      data-zoom-image="assets/images/Nilfisk-SC401-scrubber-cleaning-shopping-centre.jpg"
+                      alt="Post"
+                      width="400"
+                      height="185"
+                    />
+
+                    <span class="prod-full-screen">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </div>
+                  <!-- End .post-media -->
+
+                  <div class="post-body">
+                    <div class="category-list">
+                      Bienvenue sur le site web d’Hygimar
+                    </div>
+
+                    <h2 class="post-title">
+                      Votre fournisseur de confiance pour tout ce qui concerne
+                      le matériel de nettoyage professionnel.
+                    </h2>
+                    <br />
+                    <div class="post-content">
+                      <p>
+                        Nous sommes une entreprise spécialisée dans la vente de
+                        solutions de nettoyage de haute qualité pour les
+                        entreprises et les institutions, et nous sommes fiers
+                        d’offrir une large gamme de produits pour répondre à
+                        tous vos besoins.
+                      </p>
+                    </div>
+                    <!-- End .post-content -->
+                  </div>
+                  <!-- End .post-body -->
+                </article>
+                <!-- End .post -->
+                <article class="post">
+                  <div class="post-media">
+                    <img
+                      src="assets/images/SC450_supermarket-ps-FrontendVeryLarge-THCELD.jpg"
+                      data-zoom-image="assets/images/SC450_supermarket-ps-FrontendVeryLarge-THCELD.jpg"
+                      alt="Post"
+                      width="400"
+                      height="185"
+                    />
+
+                    <span class="prod-full-screen">
+                      <i class="fas fa-search"></i>
+                    </span>
+                  </div>
+                  <!-- End .post-media -->
+
+                  <div class="post-body">
+                    <h2 class="post-title">
+                      Notre entreprise est fondée sur des valeurs solides de
+                      qualité, d’efficacité et de service client exceptionnel.
+                    </h2>
+                    <br />
+                    <div class="post-content">
+                      <p>
+                        Nous comprenons que chaque entreprise a des besoins
+                        différents en matière de nettoyage, c’est pourquoi nous
+                        travaillons en étroite collaboration avec nos clients
+                        pour comprendre leurs exigences spécifiques et leur
+                        fournir des produits qui répondent à leurs attentes.
+                      </p>
+                    </div>
+                    <!-- End .post-content -->
+                  </div>
+                  <!-- End .post-body -->
+                </article>
+                <!-- End .post -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="newsletter-section appear-animate"
+          data-animation-name="fadeInUpShorter"
+          data-animation-delay="200"
+        >
+          <div class="container">
+            <div class="row no-gutters m-0 align-items-center">
+              <div class="col-lg-8 col-xl-4 mb-2 mb-lg-0">
+                <div
+                  class="info-box d-block d-sm-flex text-center text-sm-left"
+                >
+                  <div class="widget-newsletter-info">
+                    <h4 class="font-weight-bold line-height-1">
+                      Télécharger les catalogues
+                    </h4>
+                    <p class="font2">
+                      Vous puvez telecharger nos catalogues pour plus informations
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-xl-8">
+                <button type="submit" class="btn btn-primary" style="float: right;">
+                      Telecharger!
+                    </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- End .main -->
+
+      <footer class="footer font2 footer-reveal">
+        <div class="container">
+          <div class="footer-middle">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="widget mb-3">
+                  <h4 class="widget-title">Hygimar</h4>
+
+                  <p>
+                    HYGIMAR est une société spécialisée dans les produits
+                    d’hygiène, matériel et accessoires de nettoyage, santé et
+                    sanitaires, arts de la table et équipement alimentaire.
+                  </p>
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-lg-3 -->
+
+              <div class="col-lg-3">
+                <div class="widget mb-3">
+                  <h4 class="widget-title">Liens rapides</h4>
+
+                  <ul class="links">
+                    <li><a href="about.html">Accueil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Nos categories</a></li>
+                    <li><a href="#">Nos catalogues</a></li>
+                    <li><a href="#">Nos marque</a></li>
+                  </ul>
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-lg-3 -->
+
+              <div class="col-lg-3">
+                <div class="widget mb-3">
+                  <h4 class="widget-title">Nos gammes de produit</h4>
+
+                  <ul class="links">
+                    <li><a href="#">Produits D'hygiène</a></li>
+                    <li><a href="#">NILFISK</a></li>
+                    <li><a href="#">Matériels</a></li>
+                    <li><a href="#">VIPER</a></li>
+                  </ul>
+                </div>
+                <!-- End .widget -->
+              </div>
+              <!-- End .col-lg-3 -->
+
+              <div class="col-lg-3">
+                <div class="widget mb-3">
+                  <h4 class="widget-title">Social Media</h4>
+
+                  <div class="social-icons">
+                    <a
+                      href="#"
+                      class="social-icon social-instagram icon-instagram"
+                      target="_blank"
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon social-twitter icon-twitter"
+                      target="_blank"
+                    ></a>
+                    <a
+                      href="#"
+                      class="social-icon social-facebook icon-facebook"
+                      target="_blank"
+                    ></a>
+                  </div>
+
+                  <!-- End .social-icons -->
+                </div>
+                <!-- End .col-lg-3 -->
+
+     
+              </div>
+              <!-- End .row -->
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p class="footer-copyright text-lg-center ls-n-25 mb-0">
+              Hygimar.&nbsp;&copy;&nbsp;&nbsp;2024.&nbsp;&nbsp;All Rights
+              Reserved.
+            </p>
+          </div>
+          <!-- End .footer-bottom -->
+        </div>
+        <!-- End .container -->
+      </footer>
+      <!-- End .footer -->
+    </div>
+    <!-- End .page-wrapper -->
+
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <div class="mobile-menu-container">
+      <div class="mobile-menu-wrapper">
+        <span class="mobile-menu-close"><i class="fa fa-times"></i></span>
+        <nav class="mobile-nav">
+          <ul class="mobile-menu">
+            <li><a href="/">Accueil</a></li>
+            <li>
+              <a href="demo35-shop.html">Categories</a>
+              <ul>
+                <li><a href="category.html">Full Width Banner</a></li>
+                <li>
+                  <a href="category-banner-boxed-slider.html"
+                    >Boxed Slider Banner</a
+                  >
+                </li>
+                <li>
+                  <a href="category-banner-boxed-image.html"
+                    >Boxed Image Banner</a
+                  >
+                </li>
+                <li><a href="category-sidebar-left.html">Left Sidebar</a></li>
+                <li><a href="category-sidebar-right.html">Right Sidebar</a></li>
+                <li>
+                  <a href="category-off-canvas.html">Off Canvas Filter</a>
+                </li>
+                <li>
+                  <a href="category-horizontal-filter1.html"
+                    >Horizontal Filter 1</a
+                  >
+                </li>
+                <li>
+                  <a href="category-horizontal-filter2.html"
+                    >Horizontal Filter 2</a
+                  >
+                </li>
+                <li><a href="#">List Types</a></li>
+                <li>
+                  <a href="category-infinite-scroll.html"
+                    >Ajax Infinite Scroll<span class="tip tip-new">New</span></a
+                  >
+                </li>
+                <li><a href="category.html">3 Columns Products</a></li>
+                <li><a href="category-4col.html">4 Columns Products</a></li>
+                <li><a href="category-5col.html">5 Columns Products</a></li>
+                <li><a href="category-6col.html">6 Columns Products</a></li>
+                <li><a href="category-7col.html">7 Columns Products</a></li>
+                <li><a href="category-8col.html">8 Columns Products</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="demo35-product.html">Accueil</a>
+            </li>
+            <li>
+              <a href="#">Pages<span class="tip tip-hot">Hot!</span></a>
+              <ul>
+                <li>
+                  <a href="wishlist.html">Wishlist</a>
+                </li>
+                <li>
+                  <a href="cart.html">Shopping Cart</a>
+                </li>
+                <li>
+                  <a href="checkout.html">Checkout</a>
+                </li>
+                <li>
+                  <a href="dashboard.html">Dashboard</a>
+                </li>
+                <li>
+                  <a href="login.html">Login</a>
+                </li>
+                <li>
+                  <a href="forgot-password.html">Forgot Password</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+
+          <ul class="mobile-menu mt-2 mb-2">
+            <li class="border-0">
+              <a href="#"> Special Offer! </a>
+            </li>
+            <li class="border-0">
+              <a href="https://1.envato.market/DdLk5" target="_blank">
+                Buy hygimar!
+                <span class="tip tip-hot">Hot</span>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="mobile-menu">
+            <li><a href="login.html">My Account</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="wishlist.html">My Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="login.html" class="login-link">Log In</a></li>
+          </ul>
+        </nav>
+        <!-- End .mobile-nav -->
+
+        <form class="search-wrapper mb-2" action="#">
+          <input
+            type="text"
+            class="form-control mb-0"
+            placeholder="Search..."
+            required
+          />
+          <button
+            class="btn icon-search text-white bg-transparent p-0"
+            type="submit"
+          ></button>
+        </form>
+
+        <div class="social-icons">
+          <a
+            href="#"
+            class="social-icon social-facebook icon-facebook"
+            target="_blank"
+          >
+          </a>
+          <a
+            href="#"
+            class="social-icon social-twitter icon-twitter"
+            target="_blank"
+          >
+          </a>
+          <a
+            href="#"
+            class="social-icon social-instagram icon-instagram"
+            target="_blank"
+          >
+          </a>
+        </div>
+      </div>
+      <!-- End .mobile-menu-wrapper -->
+    </div>
+    <!-- End .mobile-menu-container -->
+
+
+    <a id="scroll-top" href="#top" title="Top" role="button"
+      ><i class="icon-angle-up"></i
+    ></a>
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/plugins.min.js"></script>
+    <script src="/assets/js/optional/isotope.pkgd.min.js"></script>
+    <script src="/assets/js/jquery.appear.min.js"></script>
+    <script src="/assets/js/jquery.plugin.min.js"></script>
+    <script src="/assets/js/jquery.countdown.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html

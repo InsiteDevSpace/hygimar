@@ -1,0 +1,37 @@
+import { Link } from 'react-router-dom';
+
+// material-ui
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+// project import
+import AuthWrapper from './AuthWrapper';
+import AuthLogin from './auth-forms/AuthLogin';
+import { Helmet } from 'react-helmet';
+
+// ================================|| LOGIN ||================================ //
+
+export default function Login() {
+  return (
+    <AuthWrapper>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Hygimar - Se Connecter</title>
+      </Helmet>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Stack direction="row" justifyContent="space-between" alignItems="baseline" sx={{ mb: { xs: -0.5, sm: 0.5 } }}>
+            <Typography variant="h3">Se Connecter</Typography>
+            <Typography component={Link} to="/register" variant="body1" sx={{ textDecoration: 'none' }} color="primary">
+              Vous n'avez pas de compte ?
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid item xs={12}>
+          <AuthLogin />
+        </Grid>
+      </Grid>
+    </AuthWrapper>
+  );
+}
