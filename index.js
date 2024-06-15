@@ -259,6 +259,117 @@ app.get("/contact", async (req, res) => {
   }
 });
 
+app.get("/produits", async (req, res) => {
+  try {
+    const [categoriesResponse, markedCategoriesResponse, productsResponse] =
+      await Promise.all([
+        axios.get(`${BASE_URL}/api/category/getcatg`),
+        axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+        axios.get(`${BASE_URL}/api/product/getall`),
+      ]);
+
+    const categories = categoriesResponse.data;
+    const markedCategories = markedCategoriesResponse.data;
+    const products = productsResponse.data;
+
+    //console.log("Fetched categories:", categories);
+    //console.log("Fetched marked categories:", markedCategories);
+    //console.log("Fetched products:", products);
+
+    res.render("shop", { categories, markedCategories, products });
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    res.status(500).send("Error loading data");
+  }
+});
+
+app.get("/filter/subcategorie/:subcategoryId", async (req, res) => {
+  try {
+    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+      axios.get(`${BASE_URL}/api/category/getcatg`),
+      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+    ]);
+
+    const subcategoryId = req.params.subcategoryId;
+    const response = await axios.get(
+      `${BASE_URL}/api/subcategory/details/${subcategoryId}`
+    );
+
+    const categories = categoriesResponse.data;
+    const markedCategories = markedCategoriesResponse.data;
+
+    const { subcategory, products } = response.data;
+
+    res.render("shop", {
+      subcategory,
+      products,
+      categories,
+      markedCategories,
+    });
+  } catch (error) {
+    console.error("Error fetching products for subcategory:", error.message);
+    res.status(500).send("Error loading products for subcategory");
+  }
+});
+
+app.get("/filter/marque/:categoryId", async (req, res) => {
+  try {
+    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+      axios.get(`${BASE_URL}/api/category/getcatg`),
+      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+    ]);
+
+    const categoryId = req.params.categoryId;
+    const response = await axios.get(
+      `${BASE_URL}/api/category/detailsmarked/${categoryId}`
+    );
+
+    const categories = categoriesResponse.data;
+    const markedCategories = markedCategoriesResponse.data;
+
+    const { category, products } = response.data;
+
+    res.render("shop", {
+      category,
+      products,
+      categories,
+      markedCategories,
+    });
+  } catch (error) {
+    console.error("Error fetching products for category:", error.message);
+    res.status(500).send("Error loading products for category");
+  }
+});
+
+app.get("/filter/categorie/:categoryId", async (req, res) => {
+  try {
+    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+      axios.get(`${BASE_URL}/api/category/getcatg`),
+      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+    ]);
+
+    const categoryId = req.params.categoryId;
+    const response = await axios.get(
+      `${BASE_URL}/api/category/details/${categoryId}`
+    );
+
+    const categories = categoriesResponse.data;
+    const markedCategories = markedCategoriesResponse.data;
+
+    const { category, products } = response.data;
+
+    res.render("shop", {
+      category,
+      products,
+      categories,
+      markedCategories,
+    });
+  } catch (error) {
+    console.error("Error fetching products for category:", error.message);
+    res.status(500).send("Error loading products for category");
+  }
+});
+
 app.use((req, res, next) => {
   console.log(`Unhandled request: ${req.method} ${req.url}`);
   res.status(404).send("Not Found");
