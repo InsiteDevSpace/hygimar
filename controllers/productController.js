@@ -175,7 +175,7 @@ export const getProductById = async (req, res) => {
       return res.status(404).send("Product not found");
     }
 
-    console.log(product); // Debugging line to check the product object
+    // console.log(product); // Debugging line to check the product object
     res.json(product); // Send product as JSON response
   } catch (error) {
     console.error("Error fetching product:", error.message);

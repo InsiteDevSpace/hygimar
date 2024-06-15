@@ -98,55 +98,39 @@
           <div class="row">
             <% products.forEach(product => { %>
             <div class="col-6 col-sm-4 col-md-3 col-xl-5col">
-              <div class="product-default">
+              <div class="product-default inner-quickview inner-icon">
                 <figure>
                   <a href="/produit/<%= product._id %>">
                     <img
                       src="/<%= product.primaryImage %>"
-                      width="220"
-                      height="220"
-                      alt="<%= product.name %>"
+                      width="217"
+                      height="217"
+                      alt="product"
                     />
                   </a>
-
-                  <div class="label-group">
-                    <% if (product.isHot) { %>
-                    <div class="product-label label-hot">HOT</div>
-                    <% } %> <% if (product.discount) { %>
-                    <div class="product-label label-sale">
-                      <%= product.discount %> OFF
-                    </div>
-                    <% } %>
-                  </div>
+                  <a
+                    href="/produit/<%= product._id %>"
+                    class="btn-quickview"
+                    title="Voir Plus"
+                    >Voir Plus</a
+                  >
                 </figure>
-
                 <div class="product-details">
                   <div class="category-wrap">
                     <div class="category-list">
                       <a
-                        href="/category/<%= product.id_catg._id %>"
+                        href="/categorie/<%= product.id_catg._id %>"
                         class="product-category"
                         ><%= product.id_catg.catg_name %></a
                       >
                     </div>
                   </div>
-
                   <h3 class="product-title">
                     <a href="/produit/<%= product._id %>"
                       ><%= product.name %></a
                     >
                   </h3>
-
-                  <div class="product-action">
-                    <a
-                      href="/produit/<%= product._id %>"
-                      class="btn-icon btn-add-cart"
-                      ><i class="fa fa-arrow-right"></i
-                      ><span>DEMANDER DEVIS</span></a
-                    >
-                  </div>
                 </div>
-                <!-- End .product-details -->
               </div>
             </div>
             <!-- End .col-sm-4 -->

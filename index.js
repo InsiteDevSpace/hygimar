@@ -83,7 +83,6 @@ app.use("/api/order", orderRoute);
 
 app.get("/", async (req, res) => {
   try {
-    console.log(`Fetching categories and products from ${BASE_URL}`);
     const [categoriesResponse, markedCategoriesResponse, productsResponse] =
       await Promise.all([
         axios.get(`${BASE_URL}/api/category/getcatg`),
@@ -95,9 +94,9 @@ app.get("/", async (req, res) => {
     const markedCategories = markedCategoriesResponse.data;
     const products = productsResponse.data;
 
-    console.log("Fetched categories:", categories);
-    console.log("Fetched marked categories:", markedCategories);
-    console.log("Fetched products:", products);
+    //console.log("Fetched categories:", categories);
+    //console.log("Fetched marked categories:", markedCategories);
+    //console.log("Fetched products:", products);
 
     res.render("index", { categories, markedCategories, products });
   } catch (error) {
@@ -116,9 +115,6 @@ app.get("/a-propos", async (req, res) => {
 
     const categories = categoriesResponse.data;
     const markedCategories = markedCategoriesResponse.data;
-
-    console.log("Fetched categories:", categories);
-    console.log("Fetched marked categories:", markedCategories);
 
     res.render("about", { categories, markedCategories });
   } catch (error) {
@@ -242,6 +238,24 @@ app.get("/subcategorie/:subcategoryId", async (req, res) => {
   } catch (error) {
     console.error("Error fetching products for subcategory:", error.message);
     res.status(500).send("Error loading products for subcategory");
+  }
+});
+
+app.get("/contact", async (req, res) => {
+  try {
+    console.log(`Fetching categories and products from ${BASE_URL}`);
+    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+      axios.get(`${BASE_URL}/api/category/getcatg`),
+      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+    ]);
+
+    const categories = categoriesResponse.data;
+    const markedCategories = markedCategoriesResponse.data;
+
+    res.render("contact", { categories, markedCategories });
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+    res.status(500).send("Error loading data");
   }
 });
 

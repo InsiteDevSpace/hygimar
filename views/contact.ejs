@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Hygimar - Contact</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Porto - Bootstrap eCommerce Template" />
+    <meta name="author" content="SW-THEMES" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/images/icons/favicon.png"
+    />
+
+    <script>
+      WebFontConfig = {
+        google: {
+          families: [
+            "Open+Sans:300,400,600,700,800",
+            "Poppins:200,300,400,500,600,700,800",
+            "Oswald:300,400,500,600,700,800",
+          ],
+        },
+      };
+      (function (d) {
+        var wf = d.createElement("script"),
+          s = d.scripts[0];
+        wf.src = "/assets/js/webfont.js";
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+    </script>
+
+    <!-- Plugins CSS File -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="/assets/css/demo35.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/vendor/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/assets/vendor/simple-line-icons/css/simple-line-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="page-wrapper">
+      <%- include('partials/header.ejs', { categories: categories,
+      markedCategories: markedCategories }) %>
+
+      <main class="main">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+          <div class="container">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="demo4.html"><i class="icon-home"></i></a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                Contact
+              </li>
+            </ol>
+          </div>
+        </nav>
+
+        <div id="map" style="position: relative; overflow: hidden">
+          <div
+            style="
+              height: 100%;
+              width: 100%;
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              background-color: rgb(229, 227, 223);
+            "
+          >
+            <div class="gm-err-container">
+              <div class="gm-err-content">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d106397.02591963536!2d-7.676631!3d33.555791!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda62cb57fb08ea9%3A0x7fbe36045cdabbd9!2s126%20Bd%20Oued%20Beht%2C%20Casablanca!5e0!3m2!1sen!2sma!4v1718458395330!5m2!1sen!2sma"
+                  width="100%"
+                  height="460"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container contact-us-container">
+          <div class="contact-info">
+            <div class="row">
+              <div class="col-12">
+                <h2 class="ls-n-25 m-b-1">Nos Coordonnées</h2>
+              </div>
+              <br /><br />
+              <div class="col-sm-6 col-lg-3">
+                <div class="feature-box text-center">
+                  <i class="sicon-location-pin"></i>
+                  <div class="feature-box-content">
+                    <h3>Contact</h3>
+                    <p>126 Boulevard Oued Beht Etage RC, Casablanca 20200</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="feature-box text-center">
+                  <i class="fa fa-mobile-alt"></i>
+                  <div class="feature-box-content">
+                    <h3>Fax / Telephone</h3>
+                    <p>+212 522 907 703</p>
+                    <p>+212 662 764 816</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="feature-box text-center">
+                  <i class="far fa-envelope"></i>
+                  <div class="feature-box-content">
+                    <h3>Adresse E-mail</h3>
+                    <p>contact@hygimar.ma</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="feature-box text-center">
+                  <i class="far fa-calendar-alt"></i>
+                  <div class="feature-box-content">
+                    <h3>Horaire</h3>
+                    <p>Lun - Ven : 09 h à 12h || 14h à18h Weekend: Off</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <h2 class="mt-6 mb-2">Envoyez-Nous un Message</h2>
+
+              <form class="mb-0" action="#">
+                <div class="form-group">
+                  <label class="mb-1" for="contact-name"
+                    >Votre Nom<span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="contact-name"
+                    name="contact-name"
+                    required=""
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="mb-1" for="contact-email"
+                    >Votre E-mail <span class="required">*</span></label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="contact-email"
+                    name="contact-email"
+                    required=""
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="mb-1" for="contact-message"
+                    >Votre Message <span class="required">*</span></label
+                  >
+                  <textarea
+                    cols="30"
+                    rows="1"
+                    id="contact-message"
+                    class="form-control"
+                    name="contact-message"
+                    required=""
+                  ></textarea>
+                </div>
+
+                <div class="form-footer mb-0">
+                  <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-8"></div>
+      </main>
+
+      <%- include('partials/footer.ejs', { categories: categories,
+      markedCategories: markedCategories }) %>
+    </div>
+    <!-- End .page-wrapper -->
+
+    <div class="loading-overlay">
+      <div class="bounce-loader">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </div>
+
+    <div class="mobile-menu-overlay"></div>
+    <!-- End .mobil-menu-overlay -->
+
+    <%- include('partials/menu-mobile.ejs', { categories: categories,
+    markedCategories: markedCategories }) %>
+
+    <a id="scroll-top" href="#top" title="Top" role="button"
+      ><i class="icon-angle-up"></i
+    ></a>
+
+    <!-- Plugins JS File -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/plugins.min.js"></script>
+    <script src="/assets/js/nouislider.min.js"></script>
+    <script src="/assets/js/jquery.plugin.min.js"></script>
+    <script src="/assets/js/jquery.countdown.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="/assets/js/main.min.js"></script>
+  </body>
+</html>

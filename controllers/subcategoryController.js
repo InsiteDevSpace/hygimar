@@ -101,7 +101,9 @@ export const getSubCategoryDetails = async (req, res) => {
     }
 
     // Fetch the products for the category
-    const products = await Product.find({ id_subcatg: subcategoryId });
+    const products = await Product.find({ id_subcatg: subcategoryId })
+      .populate("id_catg")
+      .populate("id_subcatg");
 
     res.status(200).json({ subcategory, products });
   } catch (error) {

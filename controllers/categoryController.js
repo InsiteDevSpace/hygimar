@@ -176,7 +176,9 @@ export const getCategoryDetails = async (req, res) => {
     }
 
     // Fetch the products for the category
-    const products = await Product.find({ id_catg: categoryId });
+    const products = await Product.find({ id_catg: categoryId })
+      .populate("id_catg")
+      .populate("id_subcatg");
 
     res.status(200).json({ category, products });
   } catch (error) {
@@ -197,7 +199,9 @@ export const getMarkedCategoryDetails = async (req, res) => {
     }
 
     // Fetch the products for the category
-    const products = await Product.find({ id_catg: categoryId });
+    const products = await Product.find({ id_catg: categoryId })
+      .populate("id_catg")
+      .populate("id_subcatg");
 
     res.status(200).json({ category, products });
   } catch (error) {
