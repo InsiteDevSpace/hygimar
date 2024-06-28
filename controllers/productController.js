@@ -217,7 +217,8 @@ export const getRelatedProducts = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
       .populate("id_catg")
-      .populate("id_subcatg");
+      .populate("id_subcatg")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
 
     if (!product) {
       return res.status(404).send("Product not found");
@@ -247,7 +248,8 @@ export const getProductsByCategory = async (req, res) => {
       .populate("id_catg")
       .populate("id_subcatg")
       .populate("id_subsubcatg")
-      .populate("id_mark");
+      .populate("id_mark")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
 
     if (!products) {
       return res

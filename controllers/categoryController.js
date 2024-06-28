@@ -211,7 +211,9 @@ export const getProductsByCategory = async (req, res) => {
     const products = await Product.find({ id_catg: categoryId })
       .populate("id_catg")
       .populate("id_subcatg")
-      .populate("id_subsubcatg");
+      .populate("id_subsubcatg")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
+
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -224,7 +226,9 @@ export const getProductsBySubcategory = async (req, res) => {
     const products = await Product.find({ id_subcatg: subcategoryId })
       .populate("id_catg")
       .populate("id_subcatg")
-      .populate("id_subsubcatg");
+      .populate("id_subsubcatg")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
+
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -243,7 +247,8 @@ export const getCategoryDetails = async (req, res) => {
     const products = await Product.find({ id_catg: categoryId })
       .populate("id_catg")
       .populate("id_subcatg")
-      .populate("id_subsubcatg");
+      .populate("id_subsubcatg")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
 
     res.status(200).json({ category, products });
   } catch (error) {
@@ -264,7 +269,8 @@ export const getMarkedCategoryDetails = async (req, res) => {
     const products = await Product.find({ id_mark: markId })
       .populate("id_catg")
       .populate("id_subcatg")
-      .populate("id_subsubcatg");
+      .populate("id_subsubcatg")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
 
     res.status(200).json({ mark, products });
   } catch (error) {
