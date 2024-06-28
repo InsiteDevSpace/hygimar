@@ -5,8 +5,10 @@
       <ul class="mobile-menu">
         <li><a href="/">Accueil</a></li>
         <li><a href="/a-propos">A Propos</a></li>
+        <li><a href="/produits">Boutique</a></li>
+
         <li>
-          <a href="/produits">Gammes de produit</a>
+          <a href="#">Categories</a>
 
           <ul>
             <% categories.forEach(category => { %>
@@ -21,16 +23,42 @@
         <li>
           <a href="#">Marques</a>
           <ul>
-            <% markedCategories.forEach(category => { %>
+            <% marks.forEach(category => { %>
             <li>
-              <a href="/categorie/<%= category._id %>"
-                ><%= category.catg_name %></a
+              <a href="/marque/<%= category._id %>"
+                ><%= category.mark_name %></a
               >
             </li>
             <% }) %>
           </ul>
         </li>
-        <li><a href="/catalogues">Catalogues</a></li>
+        <li>
+          <a href="#">Catalogues</a>
+          <ul>
+            <li>
+              <a
+                target="_blank"
+                href="/uploads/catalogues/c2a5a0d8-3b14-48ba-98ac-78e964d0eae1.pdf"
+                >Catalogue Hygimar 2020</a
+              >
+              <a
+                target="_blank"
+                href="/uploads/catalogues/e900b102-92ed-434c-8f39-6b56b80bc62f.pdf"
+                >Catalogue Materiel de nettoyage
+              </a>
+              <a
+                target="_blank"
+                href="/uploads/catalogues/b3873f71-c270-400f-a09f-a043331fae37.pdf"
+                >Catalogue Nilfisk 2022</a
+              >
+              <a
+                target="_blank"
+                href="/uploads/catalogues/19dc887b-76c8-4c64-9274-ecd4903ec82b.pdf"
+                >Catalogue Viper 2022</a
+              >
+            </li>
+          </ul>
+        </li>
         <li><a href="/contact">Contact</a></li>
       </ul>
     </nav>

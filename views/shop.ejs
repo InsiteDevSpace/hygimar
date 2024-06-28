@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Hygimar - Nos Produits</title>
+    <title>HYGIMAR - Nos Produits</title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template" />
@@ -59,8 +59,8 @@
 
   <body>
     <div class="page-wrapper">
-      <%- include('partials/header.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      <%- include('partials/header.ejs', { categories: categories, marks: marks
+      }) %>
 
       <main class="main">
         <div class="container">
@@ -228,36 +228,6 @@
                   <h3 class="widget-title">
                     <a
                       data-toggle="collapse"
-                      href="#"
-                      role="button"
-                      aria-expanded="true"
-                      aria-controls="widget-body-5"
-                      >Marques</a
-                    >
-                  </h3>
-
-                  <div class="collapse show" id="widget-body-5">
-                    <div class="widget-body">
-                      <ul class="cat-list">
-                        <% markedCategories.forEach(category => { %>
-                        <li>
-                          <a href="/filter/marque/<%= category._id %>"
-                            ><%= category.catg_name %></a
-                          >
-                        </li>
-                        <% }) %>
-                      </ul>
-                    </div>
-                    <!-- End .widget-body -->
-                  </div>
-                  <!-- End .collapse -->
-                </div>
-                <!-- End .widget -->
-
-                <div class="widget widget-brand">
-                  <h3 class="widget-title">
-                    <a
-                      data-toggle="collapse"
                       href="#widget-body-6"
                       role="button"
                       aria-expanded="true"
@@ -266,7 +236,7 @@
                     >
                   </h3>
 
-                  <div class="collapse show" id="widget-body-6">
+                  <div class="collapse" id="widget-body-6">
                     <div class="widget-body">
                       <ul class="cat-list">
                         <% categories.forEach(category => { %> <%
@@ -283,6 +253,37 @@
                   </div>
                   <!-- End .collapse -->
                 </div>
+
+                <div class="widget">
+                  <h3 class="widget-title">
+                    <a
+                      data-toggle="collapse"
+                      href="#widget-body-5"
+                      role="button"
+                      aria-expanded="true"
+                      aria-controls="widget-body-5"
+                      >Marques</a
+                    >
+                  </h3>
+
+                  <div class="collapse" id="widget-body-5">
+                    <div class="widget-body">
+                      <ul class="cat-list">
+                        <% marks.forEach(category => { %>
+                        <li>
+                          <a href="/filter/marque/<%= category._id %>"
+                            ><%= category.mark_name %></a
+                          >
+                        </li>
+                        <% }) %>
+                      </ul>
+                    </div>
+                    <!-- End .widget-body -->
+                  </div>
+                  <!-- End .collapse -->
+                </div>
+                <!-- End .widget -->
+
                 <!-- End .widget -->
               </div>
               <!-- End .sidebar-wrapper -->
@@ -294,8 +295,8 @@
         <!-- End .container -->
       </main>
 
-      <%- include('partials/footer.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      <%- include('partials/footer.ejs', { categories: categories, marks: marks
+      }) %>
     </div>
     <!-- End .page-wrapper -->
 
@@ -310,8 +311,8 @@
     <div class="mobile-menu-overlay"></div>
     <!-- End .mobil-menu-overlay -->
 
-    <%- include('partials/menu-mobile.ejs', { categories: categories,
-    markedCategories: markedCategories }) %>
+    <%- include('partials/menu-mobile.ejs', { categories: categories, marks:
+    marks }) %>
 
     <a id="scroll-top" href="#top" title="Top" role="button"
       ><i class="icon-angle-up"></i

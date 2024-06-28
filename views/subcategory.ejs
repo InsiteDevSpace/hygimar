@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Hygimar - Sous Categorie <%= subcategory.subcatg_name %></title>
+    <title>HYGIMAR - Sous Categorie <%= subcategory.subcatg_name %></title>
 
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template" />
@@ -59,8 +59,8 @@
 
   <body>
     <div class="page-wrapper">
-      <%- include('partials/header.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      <%- include('partials/header.ejs', { categories: categories, marks: marks
+      }) %>
 
       <main class="main">
         <div class="category-banner-container bg-gray">
@@ -152,8 +152,8 @@
       </main>
       <!-- End .main -->
 
-      <%- include('partials/footer.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      <%- include('partials/footer.ejs', { categories: categories, marks: marks
+      }) %>
     </div>
     <!-- End .page-wrapper -->
 
@@ -168,8 +168,8 @@
     <div class="mobile-menu-overlay"></div>
     <!-- End .mobil-menu-overlay -->
 
-    <%- include('partials/menu-mobile.ejs', { categories: categories,
-    markedCategories: markedCategories }) %>
+    <%- include('partials/menu-mobile.ejs', { categories: categories, marks:
+    marks }) %>
 
     <a id="scroll-top" href="#top" title="Top" role="button"
       ><i class="icon-angle-up"></i

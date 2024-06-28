@@ -8,10 +8,10 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>Hygimar - Fournisseur Nilfisk Maroc</title>
+    <title>HYGIMAR - Fournisseur Nilfisk Maroc</title>
 
     <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Hygimar - Fournisseur Nilfisk Maroc" />
+    <meta name="description" content="HYGIMAR - Fournisseur Nilfisk Maroc" />
     <meta name="author" content="SW-THEMES" />
 
     <!-- Favicon -->
@@ -69,7 +69,7 @@
       
       
 
-        <%- include('partials/header.ejs', { categories: categories, markedCategories: markedCategories }) %>
+        <%- include('partials/header.ejs', { categories: categories, marks: marks }) %>
 
 
 
@@ -78,8 +78,11 @@
           <div
             class="home-slider owl-carousel owl-theme loaded slide-animate mb-4"
             data-owl-options="{
-                    'nav': false,
-                    'lazyLoad': false
+                    'items': 1,
+                    'nav': true,
+                    'loop': true,
+                    'dots': true,
+                    'lazyLoad': true
                 }"
           >
             <div
@@ -125,12 +128,12 @@
               </div>
             </div>
             <div
-              class="home-slide home-slide-2 banner"
-              style="background-color: #f7eeef"
+              class="home-slide home-slide-1 banner"
+              style="background-color: #d9e2e1"
             >
               <figure>
                 <img
-                  src="assets/images/slide-2.png"
+                  src="assets/images/bc3.png"
                   alt="slide"
                   width="1903"
                   height="520"
@@ -142,7 +145,41 @@
                 <h2
                   class="appear-animate"
                   data-animation-name="fadeInUpShorter"
-                  data-animation-delay="600"  style="color: #d9e2e1;"
+                  data-animation-delay="600" style="color: #fff;"
+                >
+                  Plus de 20 ans
+                </h2>
+                <div
+                  class="position-relative appear-animate"
+                  data-animation-name="fadeInRightShorter"
+                  data-animation-delay="1100" 
+                >
+                  <h3 class="text-uppercase mb-4"  style="color: #fff;">d'expérience au marché</h3>
+   
+                </div>
+        
+       
+              </div>
+            </div>
+            <div
+              class="home-slide home-slide-2 banner"
+              style="background-color: #f7eeef"
+            >
+              <figure>
+                <img
+                  src="assets/images/bc2.png"
+                  alt="slide"
+                  width="1903"
+                  height="520"
+                />
+              </figure>
+
+              <div class="banner-layer banner-layer-middle banner-layer-left">
+    
+                <h2
+                  class="appear-animate"
+                  data-animation-name="fadeInUpShorter"
+                  data-animation-delay="600" 
                 >
                   Hygimar
                 </h2>
@@ -151,7 +188,7 @@
                   data-animation-name="fadeInRightShorter"
                   data-animation-delay="1100"
                 >
-                  <h3 class="text-uppercase mb-4"  style="color: #d9e2e1;">Expériences et savoir-faire<br>à vos service</h3>
+                  <h3 class="text-uppercase mb-4" >Expériences et savoir-faire<br>à vos service</h3>
    
                 </div>
         
@@ -298,7 +335,7 @@
               data-animation-delay="200"
             >
 
-              <h2 class="section-title">NOS GAMMES DE PRODUITS</h2>
+              <h2 class="section-title">NOS CATEGORIES</h2>
               <p class="section-info font2">Nous sommes une entreprise spécialisée dans la vente de solutions de nettoyage de haute qualité pour les entreprises et les institutions, et nous sommes fiers d’offrir une large gamme de produits pour répondre à tous vos besoins.
               </p>
 
@@ -582,18 +619,18 @@
                 >
                   <div class="widget-newsletter-info">
                     <h4 class="font-weight-bold line-height-1">
-                      Télécharger les catalogues
+                      Get In Touch!
                     </h4>
                     <p class="font2">
-                      Vous puvez telecharger nos catalogues pour plus informations
+                      Afin de répondre au mieux à vos besoins, nous vous remercions de nous contactz pour plus infomations ➡️
                     </p>
                   </div>
                 </div>
               </div>
               <div class="col-lg-4 col-xl-8">
-                <button type="submit" class="btn btn-primary" style="float: right;">
-                      Telecharger!
-                    </button>
+                <a href="" class="btn btn-primary" style="float: right;">
+                      Nous-Contactez
+                    </a>
               </div>
             </div>
           </div>
@@ -602,7 +639,7 @@
       <!-- End .main -->
 
        <%- include('partials/footer.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      marks: marks }) %>
     </div>
     <!-- End .page-wrapper -->
 
@@ -610,7 +647,7 @@
     <!-- End .mobil-menu-overlay -->
 
     <%- include('partials/menu-mobile.ejs', { categories: categories,
-    markedCategories: markedCategories }) %>
+    marks: marks }) %>
 
 
 

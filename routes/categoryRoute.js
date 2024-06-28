@@ -13,6 +13,7 @@ import {
   getProductsBySubcategory,
   getCategoryDetails,
   getMarkedCategoryDetails,
+  createcatg,
 } from "../controllers/categoryController.js";
 import { authenticateToken } from "../middleware/auth.js";
 
@@ -20,6 +21,8 @@ const router = express.Router();
 
 // Category routes
 router.post("/create", authenticateToken, create);
+//router.post("/createcatg", createcatg);
+
 router.get("/getall", authenticateToken, getAll);
 //router.get("/getcatg", getCatg); // Ensure this is correct
 router.get("/getcatg", getAllCategoriesWithSubcategories); // Ensure this is correct

@@ -19,7 +19,9 @@ import livraisonRoute from "./routes/livraisonRoute.js";
 import roleRoute from "./routes/roleRoute.js";
 import categoryRoute from "./routes/categoryRoute.js";
 import orderRoute from "./routes/orderRoute.js";
+import markRoute from "./routes/markRoute.js";
 import subcategoryRoute from "./routes/subcategoryRoute.js";
+import subsubcategoryRoute from "./routes/subsubcategoryRoute.js";
 
 dotenv.config();
 
@@ -79,26 +81,28 @@ app.use("/api/livraison", livraisonRoute);
 app.use("/api/livreur", livreurRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/subcategory", subcategoryRoute);
+app.use("/api/subsubcategory", subsubcategoryRoute);
 app.use("/api/order", orderRoute);
+app.use("/api/mark", markRoute);
 
 app.get("/", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse, productsResponse] =
+    const [categoriesResponse, marksResponse, productsResponse] =
       await Promise.all([
         axios.get(`${BASE_URL}/api/category/getcatg`),
-        axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+        axios.get(`${BASE_URL}/api/mark/getall`),
         axios.get(`${BASE_URL}/api/product/getall`),
       ]);
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
     const products = productsResponse.data;
 
     //console.log("Fetched categories:", categories);
-    //console.log("Fetched marked categories:", markedCategories);
+    //console.log("Fetched marked categories:", marks);
     //console.log("Fetched products:", products);
 
-    res.render("index", { categories, markedCategories, products });
+    res.render("index", { categories, marks, products });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
@@ -108,15 +112,15 @@ app.get("/", async (req, res) => {
 app.get("/a-propos", async (req, res) => {
   try {
     console.log(`Fetching categories and products from ${BASE_URL}`);
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
-    res.render("about", { categories, markedCategories });
+    res.render("about", { categories, marks });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
@@ -128,25 +132,25 @@ app.get("/produit/:id", async (req, res) => {
     const [
       categoriesResponse,
       productResponse,
-      markedCategoriesResponse,
+      marksResponse,
       relatedProductsResponse,
     ] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
       axios.get(`${BASE_URL}/api/product/details/${req.params.id}`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
       axios.get(`${BASE_URL}/api/product/related/${req.params.id}`),
     ]);
 
     const categories = categoriesResponse.data;
     const product = productResponse.data;
     const relatedProducts = relatedProductsResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
     res.render("productDetails", {
       product,
       products: relatedProducts,
       categories,
-      markedCategories,
+      marks,
     });
   } catch (error) {
     console.error("Error fetching product:", error.message);
@@ -154,28 +158,28 @@ app.get("/produit/:id", async (req, res) => {
   }
 });
 
-app.get("/marque/:categoryId", async (req, res) => {
+app.get("/marque/:markId", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
-    const categoryId = req.params.categoryId;
+    const markId = req.params.markId;
     const response = await axios.get(
-      `${BASE_URL}/api/category/detailsmarked/${categoryId}`
+      `${BASE_URL}/api/category/detailsmarked/${markId}`
     );
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
-    const { category, products } = response.data;
+    const { mark, products } = response.data;
 
     res.render("mark", {
-      category,
+      mark,
       products,
       categories,
-      markedCategories,
+      marks, // Pass marks here
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
@@ -185,9 +189,9 @@ app.get("/marque/:categoryId", async (req, res) => {
 
 app.get("/categorie/:categoryId", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const categoryId = req.params.categoryId;
@@ -196,7 +200,7 @@ app.get("/categorie/:categoryId", async (req, res) => {
     );
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
     const { category, products } = response.data;
 
@@ -204,7 +208,7 @@ app.get("/categorie/:categoryId", async (req, res) => {
       category,
       products,
       categories,
-      markedCategories,
+      marks,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
@@ -214,9 +218,9 @@ app.get("/categorie/:categoryId", async (req, res) => {
 
 app.get("/subcategorie/:subcategoryId", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const subcategoryId = req.params.subcategoryId;
@@ -225,7 +229,7 @@ app.get("/subcategorie/:subcategoryId", async (req, res) => {
     );
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
     const { subcategory, products } = response.data;
 
@@ -233,7 +237,7 @@ app.get("/subcategorie/:subcategoryId", async (req, res) => {
       subcategory,
       products,
       categories,
-      markedCategories,
+      marks,
     });
   } catch (error) {
     console.error("Error fetching products for subcategory:", error.message);
@@ -244,15 +248,15 @@ app.get("/subcategorie/:subcategoryId", async (req, res) => {
 app.get("/contact", async (req, res) => {
   try {
     console.log(`Fetching categories and products from ${BASE_URL}`);
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
-    res.render("contact", { categories, markedCategories });
+    res.render("contact", { categories, marks });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
@@ -261,22 +265,22 @@ app.get("/contact", async (req, res) => {
 
 app.get("/produits", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse, productsResponse] =
+    const [categoriesResponse, marksResponse, productsResponse] =
       await Promise.all([
         axios.get(`${BASE_URL}/api/category/getcatg`),
-        axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+        axios.get(`${BASE_URL}/api/mark/getall`),
         axios.get(`${BASE_URL}/api/product/getall`),
       ]);
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
     const products = productsResponse.data;
 
     //console.log("Fetched categories:", categories);
-    //console.log("Fetched marked categories:", markedCategories);
+    //console.log("Fetched marked categories:", marks);
     //console.log("Fetched products:", products);
 
-    res.render("shop", { categories, markedCategories, products });
+    res.render("shop", { categories, marks, products });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
@@ -285,9 +289,9 @@ app.get("/produits", async (req, res) => {
 
 app.get("/filter/subcategorie/:subcategoryId", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const subcategoryId = req.params.subcategoryId;
@@ -296,7 +300,7 @@ app.get("/filter/subcategorie/:subcategoryId", async (req, res) => {
     );
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
     const { subcategory, products } = response.data;
 
@@ -304,7 +308,7 @@ app.get("/filter/subcategorie/:subcategoryId", async (req, res) => {
       subcategory,
       products,
       categories,
-      markedCategories,
+      marks,
     });
   } catch (error) {
     console.error("Error fetching products for subcategory:", error.message);
@@ -314,9 +318,9 @@ app.get("/filter/subcategorie/:subcategoryId", async (req, res) => {
 
 app.get("/filter/marque/:categoryId", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const categoryId = req.params.categoryId;
@@ -325,7 +329,7 @@ app.get("/filter/marque/:categoryId", async (req, res) => {
     );
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
     const { category, products } = response.data;
 
@@ -333,7 +337,7 @@ app.get("/filter/marque/:categoryId", async (req, res) => {
       category,
       products,
       categories,
-      markedCategories,
+      marks,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
@@ -343,9 +347,9 @@ app.get("/filter/marque/:categoryId", async (req, res) => {
 
 app.get("/filter/categorie/:categoryId", async (req, res) => {
   try {
-    const [categoriesResponse, markedCategoriesResponse] = await Promise.all([
+    const [categoriesResponse, marksResponse] = await Promise.all([
       axios.get(`${BASE_URL}/api/category/getcatg`),
-      axios.get(`${BASE_URL}/api/category/getmarkedcatg`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
     ]);
 
     const categoryId = req.params.categoryId;
@@ -354,7 +358,7 @@ app.get("/filter/categorie/:categoryId", async (req, res) => {
     );
 
     const categories = categoriesResponse.data;
-    const markedCategories = markedCategoriesResponse.data;
+    const marks = marksResponse.data;
 
     const { category, products } = response.data;
 
@@ -362,7 +366,7 @@ app.get("/filter/categorie/:categoryId", async (req, res) => {
       category,
       products,
       categories,
-      markedCategories,
+      marks,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);

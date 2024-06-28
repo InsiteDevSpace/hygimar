@@ -7,9 +7,6 @@ const categorySchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    isMark: {
-      type: Boolean,
-    },
     subcategories: [
       {
         type: mongoose.Schema.Types.ObjectId,

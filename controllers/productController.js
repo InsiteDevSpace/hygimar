@@ -15,17 +15,38 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+export const uploadFiles = upload.fields([
+  { name: "images", maxCount: 5 },
+  { name: "tec_sheet", maxCount: 1 },
+]);
+
 // Create Product
 export const create = async (req, res) => {
   try {
-    const { name, description, id_catg, id_subcatg, quantity, inStock } =
-      req.body;
+    const {
+      name,
+      description,
+      id_catg,
+      id_subcatg,
+      id_subsubcatg,
+      id_mark,
+      quantity,
+      inStock,
+      primaryImage: bodyPrimaryImage,
+    } = req.body;
+
     const images = req.files?.images
       ? req.files.images.map((file) => file.path)
       : [];
     const tec_sheet = req.files?.tec_sheet ? req.files.tec_sheet[0].path : null;
+
+    // Ensure primaryImage is a valid path from the uploaded images or default to the first image
     const primaryImage =
-      req.body.primaryImage || (images.length > 0 ? images[0] : null);
+      bodyPrimaryImage && images.includes(`uploads/${bodyPrimaryImage}`)
+        ? `uploads/${bodyPrimaryImage}`
+        : images.length > 0
+        ? images[0]
+        : null;
 
     const product = new Product({
       name,
@@ -35,6 +56,8 @@ export const create = async (req, res) => {
       tec_sheet,
       id_catg,
       id_subcatg,
+      id_subsubcatg: id_subsubcatg === "null" ? null : id_subsubcatg,
+      id_mark: id_mark === "null" ? null : id_mark,
       quantity,
       inStock,
     });
@@ -47,24 +70,21 @@ export const create = async (req, res) => {
   }
 };
 
-// Export multer upload middleware
-export const uploadFiles = upload.fields([
-  { name: "images", maxCount: 5 },
-  { name: "tec_sheet", maxCount: 1 },
-]);
-
 export const getAll = async (req, res) => {
   try {
     const productData = await Product.find()
       .populate("id_catg")
-      .populate("id_subcatg");
+      .populate("id_subcatg")
+      .populate("id_subsubcatg")
+      .populate("id_mark");
+
     if (!productData) {
       return res.status(404).json({ msg: "Product data not found" });
     }
 
     res.status(200).json(productData);
   } catch (error) {
-    res.status(500).json({ error: error });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -73,7 +93,9 @@ export const getById = async (req, res) => {
     const id = req.params.id;
     const productData = await Product.findById(id)
       .populate("id_catg")
-      .populate("id_subcatg");
+      .populate("id_subcatg")
+      .populate("id_subsubcatg")
+      .populate("id_mark");
 
     if (!productData) {
       return res.status(404).json({ msg: "Product not found" });
@@ -94,6 +116,8 @@ export const updateProduct = async (req, res) => {
       description,
       id_catg,
       id_subcatg,
+      id_subsubcatg,
+      id_mark,
       quantity,
       inStock,
       primaryImage,
@@ -109,6 +133,9 @@ export const updateProduct = async (req, res) => {
     product.description = description;
     product.id_catg = id_catg;
     product.id_subcatg = id_subcatg;
+    product.id_subsubcatg =
+      id_subsubcatg === "null" || id_subsubcatg === "" ? null : id_subsubcatg;
+    product.id_mark = id_mark === "null" || id_mark === "" ? null : id_mark;
     product.quantity = quantity;
     product.inStock = inStock;
     product.primaryImage = primaryImage;
@@ -169,7 +196,9 @@ export const getProductById = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id)
       .populate("id_catg")
-      .populate("id_subcatg");
+      .populate("id_subcatg")
+      .populate("id_subsubcatg")
+      .populate("id_mark");
 
     if (!product) {
       return res.status(404).send("Product not found");
@@ -210,7 +239,9 @@ export const getProductsByCategory = async (req, res) => {
     const categoryId = req.params.categoryId;
     const products = await Product.find({ id_catg: categoryId })
       .populate("id_catg")
-      .populate("id_subcatg");
+      .populate("id_subcatg")
+      .populate("id_subsubcatg")
+      .populate("id_mark");
 
     if (!products) {
       return res

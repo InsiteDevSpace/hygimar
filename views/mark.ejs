@@ -7,9 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
-    <title>Hygimar - Marque <%= category.catg_name %></title>
-
+    <title>HYGIMAR - Marque <%= mark.mark_name %></title>
     <meta name="keywords" content="HTML5 Template" />
     <meta name="description" content="Porto - Bootstrap eCommerce Template" />
     <meta name="author" content="SW-THEMES" />
@@ -59,8 +57,8 @@
 
   <body>
     <div class="page-wrapper">
-      <%- include('partials/header.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      <%- include('partials/header.ejs', { categories: categories, marks: marks
+      }) %>
 
       <main class="main">
         <div class="category-banner-container bg-gray">
@@ -76,7 +74,7 @@
                 <div
                   class="pl-lg-5 pb-5 pb-md-0 col-md-5 col-xl-4 col-lg-4 offset-1"
                 >
-                  <h3>Marque: <%= category.catg_name %></h3>
+                  <h3>Marque: <%= mark.mark_name %></h3>
                 </div>
               </div>
             </div>
@@ -90,7 +88,7 @@
                 <a href="/"><i class="icon-home"></i></a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                <%= category.catg_name %>
+                <%= mark.mark_name %>
               </li>
             </ol>
           </nav>
@@ -133,29 +131,19 @@
                 </div>
               </div>
             </div>
-            <!-- End .col-sm-4 -->
             <% }) %>
           </div>
-          <!-- End .row -->
         </div>
-        <!-- End .container -->
         <div class="sidebar-overlay"></div>
         <aside
           class="sidebar-shop col-lg-3 order-lg-first mobile-sidebar d-lg-none"
-        >
-          <!-- Add your sidebar content here -->
-        </aside>
-        <!-- End .col-lg-3 -->
-
+        ></aside>
         <div class="mb-3"></div>
-        <!-- margin -->
       </main>
-      <!-- End .main -->
 
-      <%- include('partials/footer.ejs', { categories: categories,
-      markedCategories: markedCategories }) %>
+      <%- include('partials/footer.ejs', { categories: categories, marks: marks
+      }) %>
     </div>
-    <!-- End .page-wrapper -->
 
     <div class="loading-overlay">
       <div class="bounce-loader">
@@ -166,10 +154,9 @@
     </div>
 
     <div class="mobile-menu-overlay"></div>
-    <!-- End .mobil-menu-overlay -->
 
-    <%- include('partials/menu-mobile.ejs', { categories: categories,
-    markedCategories: markedCategories }) %>
+    <%- include('partials/menu-mobile.ejs', { categories: categories, marks:
+    marks }) %>
 
     <a id="scroll-top" href="#top" title="Top" role="button"
       ><i class="icon-angle-up"></i

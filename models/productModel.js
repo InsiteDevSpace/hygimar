@@ -2,25 +2,11 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-    },
-    description: {
-      type: String,
-    },
-    images: [
-      {
-        type: String,
-        required: true,
-      },
-    ],
-    primaryImage: {
-      type: String,
-      required: true,
-    },
-    tec_sheet: {
-      type: String,
-    },
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    images: [{ type: String, required: true }],
+    primaryImage: { type: String, required: true },
+    tec_sheet: { type: String },
     id_catg: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
@@ -28,15 +14,19 @@ const productSchema = new mongoose.Schema(
     },
     id_subcatg: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "subCategory",
+      ref: "Subcategory",
       required: true,
     },
-    quantity: {
-      type: Number,
+    id_subsubcatg: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SubsubCategory",
     },
-    inStock: {
-      type: Boolean,
+    id_mark: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Mark",
     },
+    quantity: { type: Number, required: true },
+    inStock: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
