@@ -76,7 +76,8 @@ export const getAll = async (req, res) => {
       .populate("id_catg")
       .populate("id_subcatg")
       .populate("id_subsubcatg")
-      .populate("id_mark");
+      .populate("id_mark")
+      .sort({ createdAt: -1 }); // Sort by creation date in descending order
 
     if (!productData) {
       return res.status(404).json({ msg: "Product data not found" });
@@ -214,15 +215,20 @@ export const getProductById = async (req, res) => {
 
 export const getRelatedProducts = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id).populate("id_catg");
+    const product = await Product.findById(req.params.id)
+      .populate("id_catg")
+      .populate("id_subcatg");
 
     if (!product) {
       return res.status(404).send("Product not found");
     }
 
-    // Find related products by the same category, excluding the current product
+    // Find related products by the same category and subcategory, excluding the current product
     const relatedProducts = await Product.find({
-      id_catg: product.id_catg._id,
+      $and: [
+        { id_catg: product.id_catg._id },
+        { id_subcatg: product.id_subcatg._id },
+      ],
       _id: { $ne: product._id },
     }).limit(5); // Limit the number of related products returned
 
