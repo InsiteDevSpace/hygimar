@@ -128,8 +128,8 @@
 
                 <div class="product-desc">
                   <p>
-                    <%- product.description.length > 200 ?
-                    product.description.substring(0, 200) + '...' :
+                    <%- product.description.length > 150 ?
+                    product.description.substring(0, 150) + '...' :
                     product.description %>
                   </p>
                 </div>
@@ -137,6 +137,19 @@
                 <!-- End .product-desc -->
 
                 <ul class="single-info-list">
+                  <% if (product.id_mark) { %>
+
+                  <li>
+                    MARQUE:
+                    <strong
+                      ><a
+                        href="/marque/<%= product.id_mark._id %>"
+                        class="product-category"
+                        ><%= product.id_mark.mark_name %></a
+                      ></strong
+                    >
+                  </li>
+                  <% } %>
                   <li>
                     CATEGORIE:
                     <strong>
@@ -149,6 +162,8 @@
                     </strong>
                   </li>
 
+                  <% if (product.id_subcatg._id) { %>
+
                   <li>
                     SUBCATEGORIE:
                     <strong
@@ -159,18 +174,21 @@
                       ></strong
                     >
                   </li>
+                  <% } %> <% if (product.tec_sheet) { %>
+
                   <li>
-                    DECOUVRIR
-                    <strong
-                      ><a
+                    DECOUVRIR LA
+                    <strong>
+                      <a
                         href="/<%= product.tec_sheet %>"
                         target="_blank"
                         class="product-category"
                         style="color: #fd5b5a"
-                        >LA FICHE TECHNIQUE</a
-                      ></strong
-                    >
+                        >FICHE TECHNIQUE</a
+                      >
+                    </strong>
                   </li>
+                  <% } %>
                 </ul>
 
                 <div class="product-action">
