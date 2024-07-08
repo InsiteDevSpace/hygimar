@@ -371,10 +371,21 @@
                       </figure>
                       <div class="product-details">
                         <div class="category-wrap">
+                 
+
+
                           <div class="category-list">
-                            <a href="/categorie/<%= product.id_catg._id %>" class="product-category"><%= product.id_catg.catg_name %></a>,
-                            <a href="/subcategorie/<%= product.id_subcatg._id %>" class="product-category"><%= product.id_subcatg.subcatg_name %></a>
+                            <% if (product.id_catg) { %>
+                                <a href="/categorie/<%= product.id_catg._id %>" class="product-category"><%= product.id_catg.catg_name %></a>
+                            <% } %>
+                            <% if (product.id_subcatg) { %>
+                                <a href="/subcategorie/<%= product.id_subcatg._id %>" class="product-category"><%= product.id_subcatg.subcatg_name %></a>      
+                            <% } %>
+
+                            
                           </div>
+
+
                         </div>
                         <h3 class="product-title">
                           <a href="/produit/<%= product._id %>"><%= product.name %></a>

@@ -224,14 +224,18 @@ export const getRelatedProducts = async (req, res) => {
       return res.status(404).send("Product not found");
     }
 
-    // Find related products by the same category and subcategory, excluding the current product
-    const relatedProducts = await Product.find({
-      $and: [
-        { id_catg: product.id_catg._id },
-        { id_subcatg: product.id_subcatg._id },
-      ],
+    let relatedProductsQuery = {
+      id_catg: product.id_catg._id,
       _id: { $ne: product._id },
-    }).limit(5); // Limit the number of related products returned
+    };
+
+    // Add subcategory condition only if the product has a subcategory
+    if (product.id_subcatg) {
+      relatedProductsQuery.id_subcatg = product.id_subcatg._id;
+    }
+
+    // Find related products by the same category and subcategory, excluding the current product
+    const relatedProducts = await Product.find(relatedProductsQuery).limit(5); // Limit the number of related products returned
 
     res.json(relatedProducts);
   } catch (error) {

@@ -162,17 +162,12 @@
                     </strong>
                   </li>
 
-                  <% if (product.id_subcatg._id) { %>
-
+                  <% if (product.id_subcatg) { %>
                   <li>
                     SUBCATEGORIE:
-                    <strong
-                      ><a
-                        href="/subcategorie/<%= product.id_subcatg._id %>"
-                        class="product-category"
-                        ><%= product.id_subcatg.subcatg_name %></a
-                      ></strong
-                    >
+                    <a href="/subcategorie/<%= product.id_subcatg._id %>">
+                      <%= product.id_subcatg.subcatg_name %>
+                    </a>
                   </li>
                   <% } %> <% if (product.tec_sheet) { %>
 
@@ -323,91 +318,7 @@
                     </div>
                   </div>
                   <div class="divider"></div>
-                  <div class="add-product-review">
-                    <h3 class="review-title">Add a review</h3>
-                    <form action="#" class="comment-form m-0">
-                      <div class="rating-form">
-                        <label for="rating"
-                          >Your rating <span class="required">*</span></label
-                        >
-                        <span class="rating-stars">
-                          <a class="star-1" href="#">1</a>
-                          <a class="star-2" href="#">2</a>
-                          <a class="star-3" href="#">3</a>
-                          <a class="star-4" href="#">4</a>
-                          <a class="star-5" href="#">5</a>
-                        </span>
-                        <select
-                          name="rating"
-                          id="rating"
-                          required
-                          style="display: none"
-                        >
-                          <option value="">Rate…</option>
-                          <option value="5">Perfect</option>
-                          <option value="4">Good</option>
-                          <option value="3">Average</option>
-                          <option value="2">Not that bad</option>
-                          <option value="1">Very poor</option>
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label
-                          >Your review <span class="required">*</span></label
-                        >
-                        <textarea
-                          cols="5"
-                          rows="6"
-                          class="form-control form-control-sm"
-                        ></textarea>
-                      </div>
-                      <!-- End .form-group -->
-                      <div class="row">
-                        <div class="col-md-6 col-xl-12">
-                          <div class="form-group">
-                            <label>Name <span class="required">*</span></label>
-                            <input
-                              type="text"
-                              class="form-control form-control-sm"
-                              required
-                            />
-                          </div>
-                          <!-- End .form-group -->
-                        </div>
-                        <div class="col-md-6 col-xl-12">
-                          <div class="form-group">
-                            <label>Email <span class="required">*</span></label>
-                            <input
-                              type="text"
-                              class="form-control form-control-sm"
-                              required
-                            />
-                          </div>
-                          <!-- End .form-group -->
-                        </div>
-                        <div class="col-md-12">
-                          <div class="custom-control custom-checkbox">
-                            <input
-                              type="checkbox"
-                              class="custom-control-input"
-                              id="save-name"
-                            />
-                            <label
-                              class="custom-control-label mb-0"
-                              for="save-name"
-                              >Save my name, email, and website in this browser
-                              for the next time I comment.</label
-                            >
-                          </div>
-                        </div>
-                      </div>
-                      <input
-                        type="submit"
-                        class="btn btn-primary"
-                        value="Submit"
-                      />
-                    </form>
-                  </div>
+
                   <!-- End .add-product-review -->
                 </div>
                 <!-- End .product-reviews-content -->
