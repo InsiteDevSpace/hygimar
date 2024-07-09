@@ -104,7 +104,7 @@ app.get("/", async (req, res) => {
     //console.log("Fetched marked categories:", marks);
     //console.log("Fetched products:", products);
 
-    res.render("index", { categories, marks, products });
+    res.render("index", { categories, marks, products, IMAGE_BASE_URL });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
