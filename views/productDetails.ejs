@@ -165,9 +165,14 @@
                   <% if (product.id_subcatg) { %>
                   <li>
                     SUBCATEGORIE:
-                    <a href="/subcategorie/<%= product.id_subcatg._id %>">
-                      <%= product.id_subcatg.subcatg_name %>
-                    </a>
+                    <strong>
+                      <a
+                        href="/subcategorie/<%= product.id_subcatg._id %>"
+                        class="product-category"
+                      >
+                        <%= product.id_subcatg.subcatg_name %>
+                      </a>
+                    </strong>
                   </li>
                   <% } %> <% if (product.tec_sheet) { %>
 

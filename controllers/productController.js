@@ -198,6 +198,30 @@ export const getById = async (req, res) => {
   }
 };
 
+export const deleteProductImage = async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const { image } = req.body;
+
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // Remove the image from the product's images array
+    product.images = product.images.filter((img) => img !== image);
+
+    await product.save();
+
+    res
+      .status(200)
+      .json({ message: "Image deleted from database successfully" });
+  } catch (error) {
+    console.error("Error deleting product image:", error);
+    res.status(500).json({ message: "Error deleting product image" });
+  }
+};
+
 export const deleteProduct = async (req, res) => {
   try {
     const id = req.params.id;
