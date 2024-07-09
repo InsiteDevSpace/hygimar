@@ -1,9 +1,18 @@
 import Product from "../models/productModel.js";
 import multer from "multer";
-import { uploadToFTP } from "../utils/ftpUpload.js";
+import path from "path";
+import fs from "fs";
 
 // Setup multer for file uploads
-const storage = multer.memoryStorage();
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Adjust the destination as per your project structure
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}_${file.originalname}`);
+  },
+});
+
 const upload = multer({ storage });
 
 export const uploadFiles = upload.fields([
@@ -11,6 +20,7 @@ export const uploadFiles = upload.fields([
   { name: "tec_sheet", maxCount: 1 },
 ]);
 
+// Create Product
 export const create = async (req, res) => {
   try {
     const {
@@ -25,58 +35,27 @@ export const create = async (req, res) => {
       primaryImage: bodyPrimaryImage,
     } = req.body;
 
-    const images = req.files?.images ? req.files.images : [];
-    const tec_sheet = req.files?.tec_sheet ? req.files.tec_sheet[0] : null;
+    const images = req.files?.images
+      ? req.files.images.map((file) => file.path)
+      : [];
+    const tec_sheet = req.files?.tec_sheet ? req.files.tec_sheet[0].path : null;
 
-    const imageUrls = [];
-    for (const file of images) {
-      const filename = `${Date.now()}_${file.originalname}`;
-      try {
-        await uploadToFTP(file.buffer, filename);
-        imageUrls.push(`https://hygimar.preprodagency.com/uploads/${filename}`);
-      } catch (err) {
-        console.error("Image upload failed for", filename, "Error:", err);
-        return res.status(500).json({ error: "Image upload failed" });
-      }
-    }
-
-    const tecSheetFilename = tec_sheet
-      ? `${Date.now()}_${tec_sheet.originalname}`
-      : null;
-    if (tec_sheet) {
-      try {
-        await uploadToFTP(tec_sheet.buffer, tecSheetFilename);
-      } catch (err) {
-        console.error(
-          "Tec sheet upload failed for",
-          tecSheetFilename,
-          "Error:",
-          err
-        );
-        return res.status(500).json({ error: "Tec sheet upload failed" });
-      }
-    }
-
+    // Ensure primaryImage is a valid path from the uploaded images or default to the first image
     const primaryImage =
-      bodyPrimaryImage &&
-      imageUrls.includes(
-        `https://hygimar.preprodagency.com/uploads/${bodyPrimaryImage}`
-      )
-        ? `https://hygimar.preprodagency.com/uploads/${bodyPrimaryImage}`
-        : imageUrls.length > 0
-        ? imageUrls[0]
+      bodyPrimaryImage && images.includes(`uploads/${bodyPrimaryImage}`)
+        ? `uploads/${bodyPrimaryImage}`
+        : images.length > 0
+        ? images[0]
         : null;
 
     const product = new Product({
       name,
       description,
-      images: imageUrls,
+      images,
       primaryImage,
-      tec_sheet: tecSheetFilename
-        ? `https://hygimar.preprodagency.com/uploads/${tecSheetFilename}`
-        : null,
+      tec_sheet,
       id_catg,
-      id_subcatg,
+      id_subcatg: id_subcatg === "null" ? null : id_subcatg,
       id_subsubcatg: id_subsubcatg === "null" ? null : id_subsubcatg,
       id_mark: id_mark === "null" ? null : id_mark,
       quantity,
@@ -111,10 +90,12 @@ export const updateProduct = async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
 
+    // Update the product fields
     product.name = name;
     product.description = description;
     product.id_catg = id_catg;
-    product.id_subcatg = id_subcatg;
+    product.id_subcatg =
+      id_subcatg === "null" || id_subcatg === "" ? null : id_subcatg;
     product.id_subsubcatg =
       id_subsubcatg === "null" || id_subsubcatg === "" ? null : id_subsubcatg;
     product.id_mark = id_mark === "null" || id_mark === "" ? null : id_mark;
@@ -122,36 +103,22 @@ export const updateProduct = async (req, res) => {
     product.inStock = inStock;
     product.primaryImage = primaryImage;
 
+    // Handle image files
     if (req.files && req.files.images) {
+      // Delete the old image files if they exist
       product.images.forEach((image) => {
-        // FTP delete operation can be done here if required
+        fs.unlinkSync(image);
       });
-
-      const imageUrls = [];
-      for (const file of req.files.images) {
-        const filename = `${Date.now()}_${file.originalname}`;
-        try {
-          await uploadToFTP(file.buffer, filename);
-          imageUrls.push(
-            `https://hygimar.preprodagency.com/uploads/${filename}`
-          );
-        } catch (err) {
-          console.error("Image upload failed for", filename, "Error:", err);
-          return res.status(500).json({ error: "Image upload failed" });
-        }
-      }
-      product.images = imageUrls;
+      product.images = req.files.images.map((file) => file.path);
     }
 
+    // Handle technical sheet file
     if (req.files && req.files.tec_sheet) {
-      const filename = `${Date.now()}_${req.files.tec_sheet[0].originalname}`;
-      try {
-        await uploadToFTP(req.files.tec_sheet[0].buffer, filename);
-        product.tec_sheet = `https://hygimar.preprodagency.com/uploads/${filename}`;
-      } catch (err) {
-        console.error("Tec sheet upload failed for", filename, "Error:", err);
-        return res.status(500).json({ error: "Tec sheet upload failed" });
+      // Delete the old technical sheet file if it exists
+      if (product.tec_sheet) {
+        fs.unlinkSync(product.tec_sheet);
       }
+      product.tec_sheet = req.files.tec_sheet[0].path;
     }
 
     const updatedProduct = await product.save();

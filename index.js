@@ -23,6 +23,8 @@ import markRoute from "./routes/markRoute.js";
 import subcategoryRoute from "./routes/subcategoryRoute.js";
 import subsubcategoryRoute from "./routes/subsubcategoryRoute.js";
 
+const IMAGE_BASE_URL = process.env.IMAGE_BASE_URL;
+
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -151,6 +153,7 @@ app.get("/produit/:id", async (req, res) => {
       products: relatedProducts,
       categories,
       marks,
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching product:", error.message);
@@ -280,7 +283,7 @@ app.get("/produits", async (req, res) => {
     //console.log("Fetched marked categories:", marks);
     //console.log("Fetched products:", products);
 
-    res.render("shop", { categories, marks, products });
+    res.render("shop", { categories, marks, products, IMAGE_BASE_URL });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
