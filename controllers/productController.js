@@ -200,25 +200,32 @@ export const getById = async (req, res) => {
 
 export const deleteProductImage = async (req, res) => {
   try {
-    const { productId } = req.params;
+    const { id } = req.params;
     const { image } = req.body;
 
-    const product = await Product.findById(productId);
+    const product = await Product.findById(id);
+
     if (!product) {
-      return res.status(404).json({ message: "Product not found" });
+      return res.status(404).json({ msg: "Product not found" });
     }
 
-    // Remove the image from the product's images array
+    // Remove image from product.images array
     product.images = product.images.filter((img) => img !== image);
 
+    // Save the updated product
     await product.save();
 
-    res
-      .status(200)
-      .json({ message: "Image deleted from database successfully" });
+    // Delete the image file from the server (optional)
+    const imagePath = path.join(__dirname, "../uploads", path.basename(image));
+    fs.unlink(imagePath, (err) => {
+      if (err) {
+        console.error("Failed to delete image file:", err);
+      }
+    });
+
+    res.status(200).json({ msg: "Image deleted successfully" });
   } catch (error) {
-    console.error("Error deleting product image:", error);
-    res.status(500).json({ message: "Error deleting product image" });
+    res.status(500).json({ error: error.message });
   }
 };
 
