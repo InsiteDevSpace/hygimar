@@ -166,9 +166,7 @@ export const getAll = async (req, res) => {
       .populate("id_catg")
       .populate("id_subcatg")
       .populate("id_subsubcatg")
-      .populate("id_mark")
-      .sort({ createdAt: -1 }); // Sort by creation date in descending order
-
+      .populate("id_mark");
     if (!productData) {
       return res.status(404).json({ msg: "Product data not found" });
     }

@@ -102,7 +102,7 @@
             >
             <ul class="menu menu-vertical">
               <% categories.forEach(category => { %>
-              <li class="menu-item">
+              <li>
                 <a href="/categorie/<%= category._id %>"
                   ><%= category.catg_name %></a
                 >
@@ -162,22 +162,22 @@
                 <li>
                   <a
                     target="_blank"
-                    href="/uploads/catalogues/c2a5a0d8-3b14-48ba-98ac-78e964d0eae1.pdf"
+                    href="<%= IMAGE_BASE_URL %>/uploads/catalogues/c2a5a0d8-3b14-48ba-98ac-78e964d0eae1.pdf"
                     >Catalogue HYGIMAR PHAGOGENE</a
                   >
                   <a
                     target="_blank"
-                    href="/uploads/catalogues/Catalogue HYGIMAR 2024.pdf"
+                    href="<%= IMAGE_BASE_URL %>/uploads/catalogues/Catalogue HYGIMAR 2024.pdf"
                     >Catalogue HYGIMAR
                   </a>
                   <a
                     target="_blank"
-                    href="/uploads/catalogues/b3873f71-c270-400f-a09f-a043331fae37.pdf"
+                    href="<%= IMAGE_BASE_URL %>/uploads/catalogues/b3873f71-c270-400f-a09f-a043331fae37.pdf"
                     >Catalogue Nilfisk</a
                   >
                   <a
                     target="_blank"
-                    href="/uploads/catalogues/19dc887b-76c8-4c64-9274-ecd4903ec82b.pdf"
+                    href="<%= IMAGE_BASE_URL %>/uploads/catalogues/19dc887b-76c8-4c64-9274-ecd4903ec82b.pdf"
                     >Catalogue Viper</a
                   >
                 </li>

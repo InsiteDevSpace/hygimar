@@ -183,6 +183,7 @@ app.get("/marque/:markId", async (req, res) => {
       products,
       categories,
       marks, // Pass marks here
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
@@ -212,6 +213,7 @@ app.get("/categorie/:categoryId", async (req, res) => {
       products,
       categories,
       marks,
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
@@ -241,6 +243,7 @@ app.get("/subcategorie/:subcategoryId", async (req, res) => {
       products,
       categories,
       marks,
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching products for subcategory:", error.message);
@@ -259,7 +262,7 @@ app.get("/contact", async (req, res) => {
     const categories = categoriesResponse.data;
     const marks = marksResponse.data;
 
-    res.render("contact", { categories, marks });
+    res.render("contact", { categories, marks, IMAGE_BASE_URL });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");
@@ -312,6 +315,7 @@ app.get("/filter/subcategorie/:subcategoryId", async (req, res) => {
       products,
       categories,
       marks,
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching products for subcategory:", error.message);
@@ -341,6 +345,7 @@ app.get("/filter/marque/:categoryId", async (req, res) => {
       products,
       categories,
       marks,
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
@@ -370,6 +375,7 @@ app.get("/filter/categorie/:categoryId", async (req, res) => {
       products,
       categories,
       marks,
+      IMAGE_BASE_URL,
     });
   } catch (error) {
     console.error("Error fetching products for category:", error.message);
