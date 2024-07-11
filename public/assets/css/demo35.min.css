@@ -10351,7 +10351,6 @@ header .separator {
   left: -15px;
 }
 .main-nav .menu .megamenu {
-  top: 100%;
   left: -15px;
   border-top: none;
 }
@@ -10718,7 +10717,6 @@ header .separator {
 }
 .menu-vertical .megamenu,
 .menu-vertical ul {
-  top: 0;
   left: 100%;
   margin-left: -1px;
   border-top: 0;
@@ -11258,7 +11256,7 @@ footer .contact-info-label {
   display: flex;
   position: static;
   margin: 0;
-  padding: 8px 5px 0;
+  padding: 0px 5px 0;
   border-top: 1px solid #e7e7e7;
 }
 .menu-depart .menu > li > a {
@@ -11358,7 +11356,6 @@ footer .contact-info-label {
 .menu-depart .megamenu.megamenu-six,
 .menu-depart .megamenu.megamenu-three,
 .menu-depart .megamenu.megamenu-two {
-  top: 0;
   left: 100% !important;
   width: 830px;
   padding: 0.5rem;
