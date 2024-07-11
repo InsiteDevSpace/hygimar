@@ -19,7 +19,7 @@ const router = express.Router();
 router.post("/create", authenticateToken, uploadFiles, create);
 router.get("/getall", getAll);
 router.get("/:id", authenticateToken, getById);
-router.put("/update/:id", uploadFiles, authenticateToken, updateProduct);
+router.put("/update/:id", authenticateToken, uploadFiles, updateProduct);
 router.get("/details/:id", getProductById);
 router.get("/related/:id", getRelatedProducts);
 

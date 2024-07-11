@@ -90,6 +90,8 @@ export const create = async (req, res) => {
   }
 };
 
+// Update Product
+
 export const updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -132,20 +134,27 @@ export const updateProduct = async (req, res) => {
         const filename = `${Date.now()}_${file.originalname}`;
         try {
           await uploadToFTP(file.buffer, filename);
-          imageUrls.push(`${IMAGE_BASE_URL}/${filename}`);
+          imageUrls.push(`uploads/${filename}`);
         } catch (err) {
           console.error("Image upload failed for", filename, "Error:", err);
           return res.status(500).json({ error: "Image upload failed" });
         }
       }
       product.images = imageUrls;
+
+      // Ensure primaryImage is set to one of the new images if necessary
+      if (primaryImage && imageUrls.includes(primaryImage)) {
+        product.primaryImage = primaryImage;
+      } else if (imageUrls.length > 0) {
+        product.primaryImage = imageUrls[0];
+      }
     }
 
     if (req.files && req.files.tec_sheet) {
       const filename = `${Date.now()}_${req.files.tec_sheet[0].originalname}`;
       try {
         await uploadToFTP(req.files.tec_sheet[0].buffer, filename);
-        product.tec_sheet = `${IMAGE_BASE_URL}/${filename}`;
+        product.tec_sheet = `uploads/${filename}`;
       } catch (err) {
         console.error("Tec sheet upload failed for", filename, "Error:", err);
         return res.status(500).json({ error: "Tec sheet upload failed" });
