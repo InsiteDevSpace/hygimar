@@ -4,6 +4,7 @@ import streamifier from "streamifier";
 export async function uploadToFTP(buffer, filename) {
   const client = new ftp.Client();
   client.ftp.verbose = true;
+
   try {
     await client.access({
       host: "ftp.preprodagency.com",

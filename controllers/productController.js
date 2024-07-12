@@ -122,14 +122,13 @@ export const updateProduct = async (req, res) => {
     product.id_mark = id_mark === "null" || id_mark === "" ? null : id_mark;
     product.quantity = quantity;
     product.inStock = inStock;
-    product.primaryImage = primaryImage;
+
+    let imageUrls = [];
 
     if (req.files && req.files.images) {
-      product.images.forEach((image) => {
-        // FTP delete operation can be done here if required
-      });
+      // Clear the old images
+      product.images = [];
 
-      const imageUrls = [];
       for (const file of req.files.images) {
         const filename = `${Date.now()}_${file.originalname}`;
         try {
@@ -141,13 +140,15 @@ export const updateProduct = async (req, res) => {
         }
       }
       product.images = imageUrls;
+    } else {
+      imageUrls = product.images;
+    }
 
-      // Ensure primaryImage is set to one of the new images if necessary
-      if (primaryImage && imageUrls.includes(primaryImage)) {
-        product.primaryImage = primaryImage;
-      } else if (imageUrls.length > 0) {
-        product.primaryImage = imageUrls[0];
-      }
+    // Ensure primaryImage is set to one of the new images if necessary
+    if (primaryImage && imageUrls.includes(primaryImage)) {
+      product.primaryImage = primaryImage;
+    } else if (imageUrls.length > 0) {
+      product.primaryImage = imageUrls[0];
     }
 
     if (req.files && req.files.tec_sheet) {
