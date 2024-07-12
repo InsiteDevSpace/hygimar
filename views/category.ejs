@@ -102,7 +102,7 @@
                 <figure>
                   <a href="/produit/<%= product._id %>">
                     <img
-                      src="/<%= product.primaryImage %>"
+                      src="<%= IMAGE_BASE_URL %>/<%= product.primaryImage %>"
                       width="217"
                       height="217"
                       alt="product"
@@ -117,6 +117,7 @@
                 </figure>
                 <div class="product-details">
                   <div class="category-wrap">
+                    <% if (product.id_subcatg) { %>
                     <div class="category-list">
                       <a
                         href="/subcategorie/<%= product.id_subcatg._id %>"
@@ -124,6 +125,7 @@
                         ><%= product.id_subcatg.subcatg_name %></a
                       >
                     </div>
+                    <% } %>
                   </div>
                   <h3 class="product-title">
                     <a href="/produit/<%= product._id %>"

@@ -1,6 +1,7 @@
 import Product from "../models/productModel.js";
 import Subsubcategory from "../models/subsubcategoryModel.js";
 import Subcategory from "../models/subcategoryModel.js";
+import Category from "../models/categoryModel.js";
 
 export const create = async (req, res) => {
   try {
