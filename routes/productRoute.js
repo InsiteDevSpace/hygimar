@@ -10,6 +10,7 @@ import {
   getRelatedProducts,
   getProductsByCategory,
   deleteProductImage,
+  get10products,
 } from "../controllers/productController.js";
 import { authenticateToken } from "../middleware/auth.js";
 
@@ -18,6 +19,7 @@ const router = express.Router();
 // Product routes
 router.post("/create", authenticateToken, uploadFiles, create);
 router.get("/getall", getAll);
+router.get("/get10products", get10products);
 router.get("/:id", authenticateToken, getById);
 router.put("/update/:id", authenticateToken, uploadFiles, updateProduct);
 router.get("/details/:id", getProductById);

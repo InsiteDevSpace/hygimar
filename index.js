@@ -93,7 +93,7 @@ app.get("/", async (req, res) => {
       await Promise.all([
         axios.get(`${BASE_URL}/api/category/getcatg`),
         axios.get(`${BASE_URL}/api/mark/getall`),
-        axios.get(`${BASE_URL}/api/product/getall`),
+        axios.get(`${BASE_URL}/api/product/get10products`),
       ]);
 
     const categories = categoriesResponse.data;

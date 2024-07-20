@@ -187,6 +187,25 @@ export const getAll = async (req, res) => {
   }
 };
 
+export const get10products = async (req, res) => {
+  try {
+    const productData = await Product.find()
+      .populate("id_catg")
+      .populate("id_subcatg")
+      .populate("id_subsubcatg")
+      .populate("id_mark")
+      .limit(10); // Limit the result to the first 10 products
+
+    if (!productData) {
+      return res.status(404).json({ msg: "Product data not found" });
+    }
+
+    res.status(200).json(productData);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const getById = async (req, res) => {
   try {
     const id = req.params.id;
