@@ -114,6 +114,7 @@
                   >
                 </figure>
                 <div class="product-details">
+                  <% if (product.id_subcatg) { %>
                   <div class="category-wrap">
                     <div class="category-list">
                       <a
@@ -123,6 +124,9 @@
                       >
                     </div>
                   </div>
+
+                  <% } %>
+
                   <h3 class="product-title">
                     <a href="/produit/<%= product._id %>"
                       ><%= product.name %></a
