@@ -106,23 +106,27 @@
                 <a href="/categorie/<%= category._id %>"
                   ><%= category.catg_name %></a
                 >
-                <span class="menu-btn"></span>
 
+                <% if (category.subcategories && category.subcategories.length >
+                0) { %>
+
+                <span class="menu-btn"></span>
                 <div class="megamenu megamenu-fixed-width megamenu-one">
                   <div class="row">
                     <div class="col-md-12">
                       <ul class="submenu">
                         <% category.subcategories.forEach(subcategory => { %>
                         <li>
-                          <a href="/subcategorie/<%= subcategory._id %>"
-                            ><%= subcategory.subcatg_name %></a
-                          >
+                          <a href="/subcategorie/<%= subcategory._id %>">
+                            <%= subcategory.subcatg_name %>
+                          </a>
                         </li>
                         <% }) %>
                       </ul>
                     </div>
                   </div>
                 </div>
+                <% } %>
               </li>
               <% }) %>
             </ul>
