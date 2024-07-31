@@ -187,6 +187,19 @@ export const getAll = async (req, res) => {
   }
 };
 
+export const search = async (req, res) => {
+  try {
+    const query = req.query.q;
+    const products = await Product.find({
+      name: { $regex: query, $options: "i" },
+    }).limit(10); // Adjust the limit as needed
+
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const get10products = async (req, res) => {
   try {
     const productData = await Product.find()

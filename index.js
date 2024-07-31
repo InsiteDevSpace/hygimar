@@ -122,7 +122,7 @@ app.get("/a-propos", async (req, res) => {
     const categories = categoriesResponse.data;
     const marks = marksResponse.data;
 
-    res.render("about", { categories, marks });
+    res.render("about", { categories, marks, IMAGE_BASE_URL });
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).send("Error loading data");

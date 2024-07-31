@@ -68,15 +68,16 @@
           <a href="#" class="search-toggle" role="button"
             ><i class="icon-magnifier"></i
           ></a>
-          <form action="#" method="get">
+          <form action="#" method="get" onsubmit="return false;">
             <div class="header-search-wrapper">
               <input
                 type="search"
                 class="form-control"
                 name="q"
-                id="q"
+                id="search-input"
                 placeholder="Search..."
                 required
+                oninput="fetchSearchResults()"
               />
               <button
                 class="btn icon-magnifier p-0"
@@ -84,6 +85,7 @@
                 type="submit"
               ></button>
             </div>
+            <ul id="search-results" class="list-group"></ul>
           </form>
         </div>
       </div>
@@ -201,3 +203,70 @@
     </div>
   </div>
 </header>
+<script>
+  async function fetchSearchResults() {
+    const query = document.getElementById("search-input").value;
+    if (query.length < 3) {
+      // Only search when the query is at least 3 characters long
+      document.getElementById("search-results").innerHTML = "";
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/product/search?q=${query}`);
+      const data = await response.json();
+      const resultsList = document.getElementById("search-results");
+      resultsList.innerHTML = "";
+
+      if (!Array.isArray(data)) {
+        console.error("Unexpected response structure:", data);
+        return;
+      }
+
+      if (data.length === 0) {
+        resultsList.innerHTML =
+          '<li class="list-group-item">No results found</li>';
+        return;
+      }
+
+      data.forEach((product) => {
+        const listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.innerHTML = `<a href="/produit/${product._id}">${product.name}</a>`;
+        resultsList.appendChild(listItem);
+      });
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  }
+</script>
+
+<style>
+  #search-results {
+    position: absolute;
+    background: white;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    z-index: 1000;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .list-group-item a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .list-group-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  .list-group-item a:hover {
+    text-decoration: underline;
+  }
+</style>
