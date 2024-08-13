@@ -8,11 +8,48 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
-    <title>HYGIMAR - Produit <%= product.name %></title>
+    <title>HYGIMAR - <%= product.name %></title>
 
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Porto - Bootstrap eCommerce Template" />
-    <meta name="author" content="SW-THEMES" />
+    <!-- Meta Tags for SEO -->
+    <meta
+      name="keywords"
+      content="<%= product.name %>, <%= product.id_catg.catg_name %>, <%= product.id_subcatg ? product.id_subcatg.subcatg_name : '' %>, buy <%= product.name %>, HYGIMAR"
+    />
+    <meta
+      name="description"
+      content="<%= product.description.length > 150 ? product.description.substring(0, 150) + '...' : product.description %>"
+    />
+    <meta name="author" content="HYGIMAR" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product" />
+    <meta property="og:title" content="HYGIMAR - <%= product.name %>" />
+    <meta
+      property="og:description"
+      content="<%= product.description.length > 150 ? product.description.substring(0, 150) + '...' : product.description %>"
+    />
+    <meta
+      property="og:image"
+      content="<%= IMAGE_BASE_URL %>/<%= product.primaryImage %>"
+    />
+    <meta
+      property="og:url"
+      content="<%= BASE_URL %>/produit/<%= product.slug %>"
+    />
+    <meta property="og:site_name" content="HYGIMAR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HYGIMAR - <%= product.name %>" />
+    <meta
+      name="twitter:description"
+      content="<%= product.description.length > 150 ? product.description.substring(0, 150) + '...' : product.description %>"
+    />
+    <meta
+      name="twitter:image"
+      content="<%= IMAGE_BASE_URL %>/<%= product.primaryImage %>"
+    />
+    <meta name="twitter:site" content="@HYGIMAR" />
 
     <!-- Favicon -->
     <link
@@ -95,7 +132,7 @@
                         data-zoom-image="<%= IMAGE_BASE_URL %>/<%= image %>"
                         width="468"
                         height="468"
-                        alt="product"
+                        alt="<%= product.name %>"
                       />
                     </div>
                     <% }); %>
@@ -112,7 +149,7 @@
                       src="<%= IMAGE_BASE_URL %>/<%= image %>"
                       width="110"
                       height="110"
-                      alt="product-thumbnail"
+                      alt="<%= product.name %> Thumbnail"
                     />
                   </div>
                   <% }); %>
@@ -124,7 +161,6 @@
                 <h1 class="product-title"><%= product.name %></h1>
 
                 <hr class="short-divider" />
-                <!-- End .price-box -->
 
                 <div class="product-desc">
                   <p>
@@ -134,11 +170,8 @@
                   </p>
                 </div>
 
-                <!-- End .product-desc -->
-
                 <ul class="single-info-list">
                   <% if (product.id_mark) { %>
-
                   <li>
                     MARQUE:
                     <strong
@@ -156,9 +189,8 @@
                       <a
                         href="/categorie/<%= product.id_catg._id %>"
                         class="product-category"
+                        ><%= product.id_catg.catg_name %></a
                       >
-                        <%= product.id_catg.catg_name %>
-                      </a>
                     </strong>
                   </li>
 
@@ -169,13 +201,11 @@
                       <a
                         href="/subcategorie/<%= product.id_subcatg._id %>"
                         class="product-category"
+                        ><%= product.id_subcatg.subcatg_name %></a
                       >
-                        <%= product.id_subcatg.subcatg_name %>
-                      </a>
                     </strong>
                   </li>
                   <% } %> <% if (product.tec_sheet) { %>
-
                   <li>
                     DECOUVRIR LA
                     <strong>
@@ -192,8 +222,6 @@
                 </ul>
 
                 <div class="product-action">
-                  <!-- End .product-single-qty -->
-
                   <a
                     href="javascript:;"
                     class="btn btn-dark add-cart font1 mr-2"
@@ -202,7 +230,6 @@
                     >Demander un Devis</a
                   >
                 </div>
-                <!-- End .product-action -->
 
                 <hr class="divider mb-0 mt-0" />
 
@@ -241,15 +268,10 @@
                       title="Mail"
                     ></a>
                   </div>
-                  <!-- End .social-icons -->
                 </div>
-                <!-- End .product single-share -->
               </div>
-              <!-- End .product-single-details -->
             </div>
-            <!-- End .row -->
           </div>
-          <!-- End .product-single-container -->
 
           <div class="product-single-tabs">
             <ul class="nav nav-tabs" role="tablist">
@@ -277,62 +299,9 @@
                 <div class="product-desc-content">
                   <p><%- product.description %></p>
                 </div>
-                <!-- End .product-desc-content -->
               </div>
-              <!-- End .tab-pane -->
-
-              <div
-                class="tab-pane fade"
-                id="product-reviews-content"
-                role="tabpanel"
-                aria-labelledby="product-tab-reviews"
-              >
-                <div class="product-reviews-content">
-                  <h3 class="reviews-title">
-                    1 review for Men Black Sports Shoes
-                  </h3>
-                  <div class="comment-list">
-                    <div class="comments">
-                      <figure class="img-thumbnail">
-                        <img
-                          src="assets/images/blog/author.jpg"
-                          alt="author"
-                          width="80"
-                          height="80"
-                        />
-                      </figure>
-                      <div class="comment-block">
-                        <div class="comment-header">
-                          <div class="comment-arrow"></div>
-                          <div class="ratings-container float-sm-right">
-                            <div class="product-ratings">
-                              <span class="ratings" style="width: 60%"></span
-                              ><!-- End .ratings -->
-                              <span class="tooltiptext tooltip-top"></span>
-                            </div>
-                            <!-- End .product-ratings -->
-                          </div>
-                          <span class="comment-by">
-                            <strong>Joe Doe</strong> – April 12, 2018
-                          </span>
-                        </div>
-                        <div class="comment-content">
-                          <p>Excellent.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="divider"></div>
-
-                  <!-- End .add-product-review -->
-                </div>
-                <!-- End .product-reviews-content -->
-              </div>
-              <!-- End .tab-pane -->
             </div>
-            <!-- End .tab-content -->
           </div>
-          <!-- End .product-single-tabs -->
 
           <div class="products-section pt-0">
             <h2 class="section-title m-b-4">
@@ -343,7 +312,6 @@
                 class="products-slider owl-carousel owl-theme dots-top dots-small mb-0"
                 data-owl-options="{'margin': 0}"
               >
-                <!-- Example of related product -->
                 <% products.forEach(relatedProduct => { %>
                 <div class="product-default inner-quickview inner-icon">
                   <figure>
@@ -352,7 +320,7 @@
                         src="<%= IMAGE_BASE_URL %>/<%= relatedProduct.primaryImage %>"
                         width="217"
                         height="217"
-                        alt="product"
+                        alt="<%= relatedProduct.name %>"
                       />
                     </a>
 
@@ -379,34 +347,22 @@
                       </div>
                     </div>
                     <h3 class="product-title">
-                      <a href="/produit/<%= relatedProduct._id %>"
+                      <a href="/produit/<%= relatedProduct.slug %>"
                         ><%= relatedProduct.name %></a
                       >
                     </h3>
-
-                    <!-- End .price-box -->
                   </div>
-                  <!-- End .product-details -->
                 </div>
                 <% }); %>
               </div>
-              <!-- End .products-slider -->
             </div>
           </div>
-          <!-- End .products-section -->
         </div>
-        <!-- End .container -->
       </main>
-      <!-- End .main -->
-
-      <!-- End .main -->
-
-      <!-- End .main -->
 
       <%- include('partials/footer.ejs', { categories: categories, marks: marks
       }) %>
     </div>
-    <!-- End .page-wrapper -->
 
     <div class="loading-overlay">
       <div class="bounce-loader">
@@ -417,12 +373,10 @@
     </div>
 
     <div class="mobile-menu-overlay"></div>
-    <!-- End .mobil-menu-overlay -->
 
     <%- include('partials/menu-mobile.ejs', { categories: categories, marks:
     marks }) %>
 
-    <!-- Modal -->
     <div
       style="background-color: #4783b257"
       class="modal fade"
@@ -521,8 +475,6 @@
       </div>
     </div>
 
-    <!-- Success Modal -->
-    <!-- Success Modal -->
     <div
       class="modal fade"
       id="successModal"
@@ -580,7 +532,6 @@
 
     <!-- Plugins JS File -->
     <script src="/assets/js/jquery.min.js"></script>
-
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/plugins.min.js"></script>
     <script src="/assets/js/nouislider.min.js"></script>
