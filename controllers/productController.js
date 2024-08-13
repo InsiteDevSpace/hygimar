@@ -3,6 +3,7 @@ import multer from "multer";
 import { uploadToFTP } from "../utils/ftpUpload.js";
 import fs from "fs";
 import path from "path";
+import slugify from "slugify";
 
 // Setup multer for file uploads
 const storage = multer.memoryStorage();
@@ -68,8 +69,12 @@ export const create = async (req, res) => {
         ? imageUrls[0]
         : null;
 
+    // Generate the slug from the product name
+    const slug = slugify(name, { lower: true, strict: true });
+
     const product = new Product({
       name,
+      slug, // Ensure the slug is explicitly set
       description,
       images: imageUrls,
       primaryImage,
@@ -238,6 +243,27 @@ export const getById = async (req, res) => {
   }
 };
 
+export const getBySlug = async (req, res) => {
+  try {
+    const slug = req.params.slug; // The slug is directly retrieved from the URL parameter
+
+    // Find the product by its slug
+    const product = await Product.findOne({ slug: slug })
+      .populate("id_catg")
+      .populate("id_subcatg")
+      .populate("id_subsubcatg")
+      .populate("id_mark");
+
+    if (!product) {
+      return res.status(404).json({ msg: "Product not found" });
+    }
+
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 export const deleteProductImage = async (req, res) => {
   try {
     const { id } = req.params;
@@ -315,29 +341,57 @@ export const getProductById = async (req, res) => {
   }
 };
 
-export const getRelatedProducts = async (req, res) => {
+export const getProductBySlug = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findOne({ slug: req.params.slug }) // Find by slug field
       .populate("id_catg")
       .populate("id_subcatg")
-      .sort({ createdAt: -1 }); // Sort by creation date in descending order
+      .populate("id_subsubcatg")
+      .populate("id_mark");
 
     if (!product) {
       return res.status(404).send("Product not found");
     }
 
+    res.json(product); // Send product as JSON response
+  } catch (error) {
+    console.error("Error fetching product:", error.message);
+    res.status(500).send("Error loading product details");
+  }
+};
+
+export const getRelatedProducts = async (req, res) => {
+  try {
+    // Find the product by its slug
+    const product = await Product.findOne({ slug: req.params.slug })
+      .populate("id_catg")
+      .populate("id_subcatg")
+      .populate("id_subsubcatg"); // Include sub-subcategory if applicable
+
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    // Build the query for related products
     let relatedProductsQuery = {
       id_catg: product.id_catg._id,
-      _id: { $ne: product._id },
+      _id: { $ne: product._id }, // Exclude the current product
     };
 
-    // Add subcategory condition only if the product has a subcategory
+    // Add subcategory condition if the product has a subcategory
     if (product.id_subcatg) {
       relatedProductsQuery.id_subcatg = product.id_subcatg._id;
     }
 
-    // Find related products by the same category and subcategory, excluding the current product
-    const relatedProducts = await Product.find(relatedProductsQuery).limit(5); // Limit the number of related products returned
+    // Add sub-subcategory condition if the product has a sub-subcategory
+    if (product.id_subsubcatg) {
+      relatedProductsQuery.id_subsubcatg = product.id_subsubcatg._id;
+    }
+
+    // Find related products by the same category and subcategory/sub-subcategory, excluding the current product
+    const relatedProducts = await Product.find(relatedProductsQuery)
+      .sort({ createdAt: -1 }) // Sort by creation date in descending order
+      .limit(5); // Limit the number of related products returned
 
     res.json(relatedProducts);
   } catch (error) {

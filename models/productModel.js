@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
+    name: { type: String, required: true, unique: true },
     description: { type: String },
     images: [{ type: String, required: true }],
     primaryImage: { type: String, required: true },
@@ -29,5 +30,8 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// Ensure the slug field is unique and required
+productSchema.index({ slug: 1 }, { unique: true });
 
 export default mongoose.model("Product", productSchema);

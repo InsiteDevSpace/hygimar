@@ -347,7 +347,7 @@
                 <% products.forEach(relatedProduct => { %>
                 <div class="product-default inner-quickview inner-icon">
                   <figure>
-                    <a href="/produit/<%= relatedProduct._id %>">
+                    <a href="/produit/<%= relatedProduct.slug %>">
                       <img
                         src="<%= IMAGE_BASE_URL %>/<%= relatedProduct.primaryImage %>"
                         width="217"
@@ -358,13 +358,13 @@
 
                     <div class="btn-icon-group">
                       <a
-                        href="/produit/<%= relatedProduct._id %>"
+                        href="/produit/<%= relatedProduct.slug %>"
                         class="btn-icon btn-add-cart product-type-simple"
                         ><i class="icon-shopping-cart"></i
                       ></a>
                     </div>
                     <a
-                      href="/produit/<%= relatedProduct._id %>"
+                      href="/produit/<%= relatedProduct.slug %>"
                       class="btn-quickview"
                       title="Quick View"
                       >VOIR PLUS</a

@@ -161,6 +161,38 @@ app.get("/produit/:id", async (req, res) => {
   }
 });
 
+app.get("/produit/:slug", async (req, res) => {
+  try {
+    const [
+      categoriesResponse,
+      productResponse,
+      marksResponse,
+      relatedProductsResponse,
+    ] = await Promise.all([
+      axios.get(`${BASE_URL}/api/category/getcatg`),
+      axios.get(`${BASE_URL}/api/product/details/${req.params.slug}`),
+      axios.get(`${BASE_URL}/api/mark/getall`),
+      axios.get(`${BASE_URL}/api/product/related/${req.params.slug}`),
+    ]);
+
+    const categories = categoriesResponse.data;
+    const product = productResponse.data;
+    const relatedProducts = relatedProductsResponse.data;
+    const marks = marksResponse.data;
+
+    res.render("productDetails", {
+      product,
+      products: relatedProducts,
+      categories,
+      marks,
+      IMAGE_BASE_URL,
+    });
+  } catch (error) {
+    console.error("Error fetching product:", error.message);
+    res.status(500).send("Error loading product details");
+  }
+});
+
 app.get("/marque/:markId", async (req, res) => {
   try {
     const [categoriesResponse, marksResponse] = await Promise.all([

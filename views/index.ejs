@@ -364,10 +364,11 @@
                   <% products.forEach(product => { %>
                     <div class="product-default inner-quickview inner-icon">
                       <figure>
-                        <a href="/produit/<%= product._id %>">
+                        <a href="/produit/<%= product.slug %>">
                           <img src="<%= IMAGE_BASE_URL %>/<%= product.primaryImage %>" width="217" height="217" alt="product" />
                         </a>
-                        <a href="/produit/<%= product._id %>" class="btn-quickview" title="Voir Plus">Voir Plus</a>
+                        <a href="/produit/<%= product.slug %>" class="btn-quickview" title="Voir Plus">Voir Plus</a>
+
                       </figure>
                       <div class="product-details">
                         <div class="category-wrap">
@@ -388,7 +389,7 @@
 
                         </div>
                         <h3 class="product-title">
-                          <a href="/produit/<%= product._id %>"><%= product.name %></a>
+                          <a href="/produit/<%= product.slug %>"><%= product.name %></a>
                         </h3>
                       </div>
                     </div>

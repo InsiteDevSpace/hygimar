@@ -156,7 +156,7 @@
                 <div class="col-6 col-sm-4 col-xl-3">
                   <div class="product-default inner-quickview inner-icon">
                     <figure>
-                      <a href="/produit/<%= product._id %>">
+                      <a href="/produit/<%= product.slug %>">
                         <img
                           src="<%= IMAGE_BASE_URL %>/<%= product.primaryImage %>"
                           width="217"
@@ -165,7 +165,7 @@
                         />
                       </a>
                       <a
-                        href="/produit/<%= product._id %>"
+                        href="/produit/<%= product.slug %>"
                         class="btn-quickview"
                         title="Voir Plus"
                         >Voir Plus</a
@@ -173,7 +173,7 @@
                     </figure>
                     <div class="product-details">
                       <h3 class="product-title">
-                        <a href="/produit/<%= product._id %>"
+                        <a href="/produit/<%= product.slug %>"
                           ><%= product.name %></a
                         >
                       </h3>

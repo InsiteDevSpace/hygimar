@@ -232,7 +232,7 @@
       data.forEach((product) => {
         const listItem = document.createElement("li");
         listItem.className = "list-group-item";
-        listItem.innerHTML = `<a href="/produit/${product._id}">${product.name}</a>`;
+        listItem.innerHTML = `<a href="/produit/${product.slug}">${product.name}</a>`;
         resultsList.appendChild(listItem);
       });
     } catch (error) {
